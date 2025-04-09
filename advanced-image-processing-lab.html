@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Image Processing Laboratory - Javier Rondon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .project-iframe {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .project-iframe iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .detail-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .detail-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .detail-card h3 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        .return-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .return-link i {
+            margin-right: 0.5rem;
+        }
+        .return-link:hover {
+            transform: translateX(-5px);
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .feature-item h4 {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">JR</div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-btn">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <div class="project-header">
+            <a href="index.html" class="return-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1>Advanced Image Processing Laboratory</h1>
+            <div class="project-tags" style="justify-content: center; margin-top: 1rem;">
+                <span>OpenCV</span>
+                <span>Streamlit</span>
+                <span>Computer Vision</span>
+                <span>Image Analysis</span>
+            </div>
+            <p class="project-description">
+                A comprehensive image processing workbench that provides access to a wide range of computer vision algorithms and techniques. This interactive application allows users to upload images and apply various transformations, filters, and analysis methods with real-time results and parameter adjustments.
+            </p>
+            <p>The application leverages OpenCV's extensive image processing capabilities combined with Streamlit's interactive interface to create a powerful yet user-friendly laboratory environment for experimenting with digital image processing techniques.</p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-sliders-h"></i>
+                <h4>Basic Operations</h4>
+                <p>Resize, rotate, flip, and adjust brightness/contrast of images with intuitive controls and real-time previews.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-filter"></i>
+                <h4>Advanced Filtering</h4>
+                <p>Apply blur, Gaussian, median, bilateral filters and custom kernels with adjustable parameters for noise reduction and image enhancement.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-paint-brush"></i>
+                <h4>Color Transformations</h4>
+                <p>Convert between RGB, HSV, LAB, and YCrCb color spaces, with the ability to visualize individual color channels separately.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-adjust"></i>
+                <h4>Thresholding Techniques</h4>
+                <p>Apply binary, adaptive, and Otsu thresholding with adjustable threshold values for image segmentation and feature extraction.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-border-style"></i>
+                <h4>Morphological Operations</h4>
+                <p>Perform erosion, dilation, opening, closing, and other morphological transformations with customizable kernel sizes.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-bezier-curve"></i>
+                <h4>Edge Detection</h4>
+                <p>Detect edges using Canny, Sobel, Laplacian, and Scharr operators with adjustable sensitivity and thresholds.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-bullseye"></i>
+                <h4>Feature Detection</h4>
+                <p>Identify corners and interesting points using Harris Corner, Shi-Tomasi, and FAST detectors for computer vision applications.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Histogram Operations</h4>
+                <p>View and manipulate image histograms with equalization and CLAHE techniques for enhanced contrast and visibility.</p>
+            </div>
+        </div>
+
+        <div class="project-iframe">
+            <iframe 
+                src="https://jarondon82-streamliteproject.hf.space" 
+                title="Advanced Image Processing Laboratory - Interactive AI Application"
+                allow="accelerometer; camera; microphone; fullscreen; autoplay"
+                loading="lazy"
+                rel="noopener">
+            </iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-card">
+                <h3><i class="fas fa-cogs"></i> Technologies</h3>
+                <ul>
+                    <li>Python for image processing algorithms</li>
+                    <li>OpenCV for computer vision operations</li>
+                    <li>Streamlit for interactive web interface</li>
+                    <li>NumPy for numerical operations and arrays</li>
+                    <li>Matplotlib for visualization and plotting</li>
+                    <li>PIL/Pillow for image manipulation</li>
+                    <li>Hugging Face Spaces for deployment</li>
+                </ul>
+            </div>
+
+            <div class="detail-card">
+                <h3><i class="fas fa-code"></i> Implementation</h3>
+                <p>Key technical aspects of this project:</p>
+                <ul>
+                    <li>Modular architecture with specialized functions for each processing category</li>
+                    <li>Reactive interface that updates in real-time as parameters change</li>
+                    <li>Efficient image processing pipeline that minimizes memory usage</li>
+                    <li>Comprehensive input validation and error handling</li>
+                    <li>Intuitive parameter controls with informative descriptions</li>
+                    <li>Optimized algorithms for interactive response times</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3><i class="fas fa-lightbulb"></i> Key Features</h3>
+            <p>The application includes several processing categories:</p>
+            <ol>
+                <li><strong>Basic Operations:</strong> Resize, rotate, flip, brightness/contrast adjustment, and color quantization</li>
+                <li><strong>Filtering:</strong> Blur, Gaussian, median, bilateral, and custom kernel filters</li>
+                <li><strong>Color Spaces:</strong> RGB, HSV, LAB, YCrCb conversions and channel separation</li>
+                <li><strong>Thresholding:</strong> Binary, inverse, truncate, adaptive, and Otsu methods</li>
+                <li><strong>Morphological Operations:</strong> Erosion, dilation, opening, closing, gradient, top hat, black hat</li>
+                <li><strong>Edge Detection:</strong> Canny, Sobel, Laplacian, and Scharr algorithms</li>
+                <li><strong>Feature Detection:</strong> Harris Corner, Shi-Tomasi, and FAST detection methods</li>
+                <li><strong>Histogram Operations:</strong> Visualization, equalization, and CLAHE enhancement</li>
+                <li><strong>Advanced Effects:</strong> Pencil sketch, cartoon, and HDR-like transformations</li>
+            </ol>
+            <p>Users can upload their own images, process them with any of these techniques, and download the resulting processed images.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://jarondon82-streamliteproject.hf.space" class="btn btn-primary" target="_blank" rel="noopener">
+                <i class="fas fa-external-link-alt"></i> Open Full Application
+            </a>
+            <a href="index.html" class="btn btn-outline" style="margin-left: 1rem;">
+                <i class="fas fa-arrow-left"></i> Return to Portfolio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Javier Rondon. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/username" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/username" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/username" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality 
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                
+                const icon = themeToggle.querySelector('i');
+                if (body.classList.contains('dark-theme')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Mobile menu
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

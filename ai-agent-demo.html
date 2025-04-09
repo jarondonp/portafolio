@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Conversation Agent - Javier Rondon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .project-iframe {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .detail-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .detail-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .detail-card h3 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        .return-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .return-link i {
+            margin-right: 0.5rem;
+        }
+        .return-link:hover {
+            transform: translateX(-5px);
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .feature-item h4 {
+            margin-bottom: 0.5rem;
+        }
+        #activate-chat {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto;
+        }
+        #activate-chat i {
+            margin-right: 0.5rem;
+        }
+        #activate-chat:hover {
+            background-color: #6b3fd4;
+            transform: translateY(-2px);
+        }
+        #activate-chat:disabled {
+            background-color: #4CAF50;
+            cursor: not-allowed;
+        }
+        .workflow-diagram {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .workflow-diagram img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">JR</div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-btn">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <div class="project-header">
+            <a href="index.html" class="return-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1>AI Conversation Agent</h1>
+            <div class="project-tags">
+                <span class="tag">OpenAI GPT</span>
+                <span class="tag">n8n Workflow</span>
+                <span class="tag">Webhooks</span>
+                <span class="tag">API Integration</span>
+            </div>
+            <p class="project-description">
+                This AI conversation agent uses OpenAI's models to provide intelligent responses with sentiment 
+                analysis and contextual memory. The system is implemented using n8n's workflow automation platform 
+                to orchestrate the conversational flow and integrate with various APIs.
+            </p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-heart"></i>
+                <h4>Sentiment Analysis</h4>
+                <p>Analyzes the emotional tone of messages to provide appropriate responses based on detected sentiment.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-brain"></i>
+                <h4>Contextual Memory</h4>
+                <p>Remembers previous conversations to provide more relevant and personalized responses over time.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-language"></i>
+                <h4>Natural Language</h4>
+                <p>Understands nuanced language, idioms, and colloquialisms for human-like conversations.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-plug"></i>
+                <h4>Integration Ready</h4>
+                <p>Easily integrates with other systems and platforms via webhooks and API connections.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-sync-alt"></i>
+                <h4>Continuous Learning</h4>
+                <p>Improves over time as it processes more conversations, adapting to user preferences and common questions.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Conversation Analytics</h4>
+                <p>Provides insights about user interactions, common topics, and satisfaction metrics to improve the experience.</p>
+            </div>
+        </div>
+
+        <div class="workflow-diagram">
+            <img src="img/ai-agent-workflow.png" alt="AI Agent Workflow Diagram" class="img-fluid">
+            <p><em>Workflow diagram showing the n8n conversation agent architecture</em></p>
+        </div>
+
+        <div class="detail-card">
+            <h3><i class="fas fa-robot"></i> Try the AI Agent</h3>
+            <p>Click the button below to start a conversation with the AI agent. You can ask it questions, discuss topics, or test its capabilities.</p>
+            
+            <button id="activate-chat">
+                <i class="fas fa-comments"></i> Start Conversation
+            </button>
+            
+            <!-- Target element for n8n Chat widget -->
+            <div id="n8n-chat"></div>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-card">
+                <h3><i class="fas fa-cogs"></i> Technologies</h3>
+                <ul>
+                    <li>n8n Cloud for workflow automation</li>
+                    <li>OpenAI GPT models for natural language understanding</li>
+                    <li>Webhook endpoints for real-time communication</li>
+                    <li>JavaScript for frontend integration</li>
+                    <li>n8n official Chat Widget API</li>
+                </ul>
+            </div>
+            <div class="detail-card">
+                <h3><i class="fas fa-code"></i> Implementation</h3>
+                <p>Key technical aspects of this project:</p>
+                <ul>
+                    <li>Conversation state management with contextual memory</li>
+                    <li>Sentiment analysis for emotional intelligence</li>
+                    <li>Webhook-based communication system</li>
+                    <li>Dynamic response generation with GPT models</li>
+                    <li>Error handling and fallback mechanisms</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3><i class="fas fa-lightbulb"></i> Key Features</h3>
+            <p>The conversation agent has multiple capabilities:</p>
+            <ol>
+                <li><strong>Sentiment Analysis:</strong> Detects emotional tone in messages</li>
+                <li><strong>Contextual Memory:</strong> Remembers past interactions</li>
+                <li><strong>Personalization:</strong> Adapts responses based on user preferences</li>
+                <li><strong>Natural Language Processing:</strong> Understands complex queries</li>
+                <li><strong>Multi-turn Conversations:</strong> Maintains context across multiple exchanges</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="index.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Return to Portfolio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Javier Rondon. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/username" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/username" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/username" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- n8n Chat Widget Implementation -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        
+        // Configure chat options
+        const chatOptions = {
+            webhookUrl: 'https://jrtechno.app.n8n.cloud/webhook/27ff0919-cd55-4748-bea6-01a23d85b939/chat',
+            mode: 'window',
+            showWelcomeScreen: true,
+            initialMessages: [
+                'Hello! 👋',
+                'I\'m the AI Assistant developed by JR Solutions. How can I help you today?'
+            ],
+            i18n: {
+                en: {
+                    title: 'AI Conversation Agent',
+                    subtitle: 'Ask me anything about AI, machine learning, or how I can assist your business.',
+                    footer: 'Powered by n8n and OpenAI',
+                    getStarted: 'New Conversation',
+                    inputPlaceholder: 'Type your question...',
+                }
+            }
+        };
+        
+        // Initialize the chat widget when the button is clicked
+        document.getElementById('activate-chat').addEventListener('click', function() {
+            // Create the chat instance
+            createChat(chatOptions);
+            
+            // This only creates the widget once
+            this.disabled = true;
+            this.textContent = 'Chat Widget Activated';
+            this.style.backgroundColor = '#4CAF50';
+        });
+    </script>
+
+    <script>
+        // Theme toggle functionality 
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                
+                const icon = themeToggle.querySelector('i');
+                if (body.classList.contains('dark-theme')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Mobile menu
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

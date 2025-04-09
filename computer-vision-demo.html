@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Face Detection & Analysis - Javier Rondon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .project-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .project-iframe {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .project-iframe iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .detail-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .detail-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .detail-card h3 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        .return-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .return-link i {
+            margin-right: 0.5rem;
+        }
+        .return-link:hover {
+            transform: translateX(-5px);
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .feature-item h4 {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">JR</div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-btn">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <div class="project-header">
+            <a href="index.html" class="return-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1>Advanced Face Detection & Analysis</h1>
+            <div class="project-tags" style="justify-content: center; margin-top: 1rem;">
+                <span>Computer Vision</span>
+                <span>Deep Learning</span>
+                <span>OpenCV</span>
+                <span>Streamlit</span>
+                <span>Python</span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p>This comprehensive computer vision application provides powerful face detection and analysis capabilities using state-of-the-art machine learning models. Built with Python, OpenCV, and Streamlit, it offers an intuitive interface for analyzing faces and facial features in images and videos.</p>
+            <p>The application leverages OpenCV's Deep Neural Network (DNN) module with a pre-trained SSD MobileNet model for accurate face detection, along with Haar Cascade classifiers for detailed facial feature recognition.</p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-user-check"></i>
+                <h4>Face Detection</h4>
+                <p>Accurately detects faces in images and videos using OpenCV's DNN module with SSD MobileNet, with adjustable confidence thresholds for optimal performance.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-eye"></i>
+                <h4>Facial Feature Detection</h4>
+                <p>Identifies key facial features like eyes and smiles using Haar Cascade classifiers with customizable sensitivity controls.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-pie"></i>
+                <h4>Age & Gender Analysis</h4>
+                <p>Estimates age and gender using DeepFace integration, providing additional demographic insights from facial images.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-video"></i>
+                <h4>Video Processing</h4>
+                <p>Processes both uploaded videos and webcam streams (when run locally) with real-time facial analysis and feature detection.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-user-friends"></i>
+                <h4>Face Comparison</h4>
+                <p>Compares faces across images using facial embeddings and similarity metrics to identify matching individuals.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-database"></i>
+                <h4>Face Recognition</h4>
+                <p>Recognizes known faces from a database with persistent storage capabilities for managing facial identities.</p>
+            </div>
+        </div>
+
+        <div class="project-iframe">
+            <iframe 
+                src="https://jarondon82-cvjr01-project.hf.space" 
+                title="Advanced Face Detection & Analysis - Interactive AI Model"
+                allow="accelerometer; camera; microphone; fullscreen; autoplay"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-card">
+                <h3><i class="fas fa-cogs"></i> Technologies</h3>
+                <ul>
+                    <li>Python for backend processing</li>
+                    <li>OpenCV for computer vision operations</li>
+                    <li>Streamlit for web interface</li>
+                    <li>SSD MobileNet for face detection</li>
+                    <li>Haar Cascades for facial feature detection</li>
+                    <li>DeepFace for facial attribute analysis</li>
+                    <li>Scikit-learn for similarity metrics</li>
+                    <li>Matplotlib for visualization</li>
+                    <li>Hugging Face Spaces for deployment</li>
+                </ul>
+            </div>
+            <div class="detail-card">
+                <h3><i class="fas fa-code"></i> Implementation</h3>
+                <p>Key technical aspects of this project:</p>
+                <ul>
+                    <li>Deep Neural Network approach for robust face detection</li>
+                    <li>Multi-model face embeddings for more accurate face comparison</li>
+                    <li>Optimized image processing pipeline for better feature detection</li>
+                    <li>Adaptive thresholding and confidence controls for all detection modules</li>
+                    <li>Performance optimization for real-time video processing</li>
+                    <li>Modular architecture for easy extension with new capabilities</li>
+                    <li>Comprehensive error handling for robust operation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card" style="margin-bottom: 2rem;">
+            <h3><i class="fas fa-lightbulb"></i> Key Features</h3>
+            <p>The application has multiple modes of operation:</p>
+            <ol>
+                <li><strong>Face Detection Mode:</strong> Locates faces in images and videos with bounding boxes and confidence scores</li>
+                <li><strong>Feature Detection Mode:</strong> Identifies facial features (eyes, smiles) with adjustable sensitivity</li>
+                <li><strong>Comparison Mode:</strong> Compares faces between images to determine similarity</li>
+                <li><strong>Face Recognition Mode:</strong> Identifies known individuals from a database</li>
+                <li><strong>Real-time Processing:</strong> Works with webcam input when run locally</li>
+            </ol>
+            <p><em>Note: Some features like webcam access are only available when running the application locally due to Hugging Face Spaces limitations.</em></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://jarondon82-cvjr01-project.hf.space" class="btn btn-primary" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Open Full Application
+            </a>
+            <a href="index.html" class="btn btn-outline" style="margin-left: 1rem;">
+                <i class="fas fa-arrow-left"></i> Return to Portfolio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Javier Rondon. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/username" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/username" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality 
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                
+                const icon = themeToggle.querySelector('i');
+                if (body.classList.contains('dark-theme')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Mobile menu
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

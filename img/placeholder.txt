@@ -1,0 +1,13 @@
+This is a placeholder file for the images directory.
+
+To complete your portfolio, you'll need to place the following images in this directory:
+
+1. profile.jpg - Your profile photo (preferably square format)
+2. project1.jpg - Image for the "BI Personal Finance Dashboard" project
+3. project2.jpg - Image for the "Healthcare Analytics Platform" project
+4. project3.jpg - Image for the "Data Pipeline Automation" project
+5. project4.jpg - Image for the "Business Intelligence Solutions" project
+6. project5.jpg - Image for the "NLP Model Development" project
+7. project6.jpg - Image for the "Audio to Text Converter" project
+
+Make sure the images are of good quality, preferably in 16:9 format for the projects.
