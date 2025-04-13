@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JRYOLO - Aplicación de Visión Artificial | Javier Rondon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo"><a href="index.html">JR</a></div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-btn">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-details">
+        <div class="container">
+            <h1>JRYOLO - Aplicación de Visión Artificial con YOLO</h1>
+            
+            <div class="project-info">
+                <div class="project-image-full">
+                    <img src="img/project4.jpg" alt="JRYOLO Application Interface">
+                </div>
+                
+                <div class="project-description">
+                    <h2>Resumen del Proyecto</h2>
+                    <p>JRYOLO es una aplicación web completa para el procesamiento de imágenes y videos mediante modelos YOLO (You Only Look Once), que proporciona una interfaz amigable para realizar diversas tareas de visión artificial.</p>
+                    
+                    <div class="project-tags">
+                        <span>Visión Artificial</span>
+                        <span>Python/Flask</span>
+                        <span>YOLO</span>
+                        <span>Web App</span>
+                        <span>OpenCV</span>
+                    </div>
+
+                    <div class="github-link">
+                        <a href="https://github.com/jarondonp/jryolo" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> Ver en GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-details-content">
+                <h2>Estructura Principal</h2>
+                <p>La aplicación está organizada como un servicio web basado en Flask con una estructura modular:</p>
+                
+                <ul>
+                    <li><strong>Backend (Python/Flask):</strong> Maneja la lógica de procesamiento de imágenes/videos y el entrenamiento de modelos</li>
+                    <li><strong>Frontend (HTML/CSS/JavaScript):</strong> Ofrece interfaces intuitivas para diferentes funcionalidades</li>
+                    <li><strong>Módulos de Utilidades:</strong> Componentes especializados que gestionan aspectos específicos
+                        <ul>
+                            <li><code>yaml_utils.py:</code> Manejo robusto de archivos YAML (corrige errores comunes)</li>
+                            <li><code>model_utils.py:</code> Extracción de información de modelos YOLO desde múltiples fuentes</li>
+                            <li><code>metrics_utils.py:</code> Gestión de métricas de modelos con capacidad para buscar en múltiples ubicaciones</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2>Funcionalidades Principales</h2>
+                
+                <div class="feature-section">
+                    <h3>1. Detección de Objetos</h3>
+                    <ul>
+                        <li>Permite cargar imágenes para identificar y localizar objetos</li>
+                        <li>Proporciona ajuste de umbral de confianza</li>
+                        <li>Visualiza los resultados con cuadros delimitadores</li>
+                        <li>Soporta procesamiento de imágenes desde URLs</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>2. Segmentación de Imágenes</h3>
+                    <ul>
+                        <li>Segmentación semántica a nivel de píxel de objetos en imágenes</li>
+                        <li>Visualización con máscaras transparentes coloreadas</li>
+                        <li>Interface especializada para este tipo de procesamiento</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>3. Estimación de Poses</h3>
+                    <ul>
+                        <li>Detecta puntos clave del cuerpo humano en imágenes</li>
+                        <li>Visualiza esqueletos y articulaciones sobre las personas detectadas</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>4. Clasificación de Imágenes</h3>
+                    <ul>
+                        <li>Identifica la categoría principal de una imagen</li>
+                        <li>Muestra probabilidades para diferentes clases posibles</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>5. Análisis de Video</h3>
+                    <ul>
+                        <li>Procesamiento de archivos de video subidos por el usuario</li>
+                        <li>Streaming en tiempo real desde webcam</li>
+                        <li>Visualización de resultados de detección/segmentación/pose en video</li>
+                        <li>Captura de fotogramas individuales para análisis</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>6. Entrenamiento de Modelos</h3>
+                    <ul>
+                        <li>Interface completa para entrenar modelos YOLO personalizados</li>
+                        <li>Soporte para cargar datasets en formato ZIP</li>
+                        <li>Verificación automática de la estructura del dataset</li>
+                        <li>Configuración de parámetros de entrenamiento (épocas, batch size, etc.)</li>
+                        <li>Seguimiento del progreso de entrenamiento en tiempo real</li>
+                        <li>Visualización de métricas de rendimiento</li>
+                    </ul>
+                </div>
+
+                <div class="feature-section">
+                    <h3>7. Gestión de Modelos</h3>
+                    <ul>
+                        <li>Visualización detallada de las clases que puede detectar el modelo</li>
+                        <li>Exploración de métricas de rendimiento</li>
+                        <li>Acceso a artefactos de entrenamiento y visualizaciones</li>
+                        <li>Documentación automática del modelo</li>
+                    </ul>
+                </div>
+
+                <h2>Características Técnicas</h2>
+                <ul>
+                    <li><strong>Compatibilidad con múltiples formatos:</strong>
+                        <ul>
+                            <li>Imágenes: PNG, JPG, JPEG, GIF</li>
+                            <li>Videos: MP4, AVI</li>
+                            <li>Datasets: ZIP</li>
+                        </ul>
+                    </li>
+                    <li><strong>API RESTful:</strong>
+                        <ul>
+                            <li>Endpoints para todas las funcionalidades principales</li>
+                            <li>Respuestas en formato JSON para integración con otras aplicaciones</li>
+                        </ul>
+                    </li>
+                    <li><strong>Procesamiento asíncrono:</strong>
+                        <ul>
+                            <li>Entrenamiento en hilos separados para no bloquear la interfaz</li>
+                            <li>Monitoreo en tiempo real del progreso de operaciones largas</li>
+                        </ul>
+                    </li>
+                    <li><strong>Almacenamiento organizado:</strong>
+                        <ul>
+                            <li>Estructura de carpetas para uploads, resultados, modelos y datasets</li>
+                            <li>Generación de nombres únicos para archivos</li>
+                        </ul>
+                    </li>
+                    <li><strong>Compatibilidad con Hugging Face Spaces:</strong>
+                        <ul>
+                            <li>Adaptaciones para ejecutarse en entornos cloud</li>
+                            <li>Puerto configurado para 7860</li>
+                        </ul>
+                    </li>
+                    <li><strong>Manejo Robusto de Errores:</strong>
+                        <ul>
+                            <li>Verificación exhaustiva de datos de entrada</li>
+                            <li>Recuperación de errores comunes en archivos de configuración</li>
+                            <li>Logging detallado para diagnóstico</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="conclusion">
+                    <p>La aplicación ha sido diseñada para ser accesible tanto para usuarios con conocimientos técnicos limitados como para profesionales de visión artificial, ofreciendo una interfaz intuitiva pero potente para trabajar con modelos YOLO.</p>
+                </div>
+            </div>
+
+            <div class="project-navigation">
+                <a href="index.html#projects" class="btn btn-secondary">Volver a Proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Javier Rondon. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/jarondonp" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jarondonp" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/jarondonp" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
