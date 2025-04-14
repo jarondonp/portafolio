@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Executive Agents Ecosystem | Javier Rondon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo"><a href="index.html">JR</a></div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-btn">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-container">
+        <div class="project-header">
+            <a href="index.html" class="return-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <h1>AI Executive Agents Ecosystem in n8n</h1>
+            <div class="project-tags">
+                <span>AI Agents</span>
+                <span>Automation</span>
+                <span>n8n</span>
+                <span>LangChain</span>
+                <span>API Integration</span>
+            </div>
+            <p class="project-description">
+                A comprehensive ecosystem of intelligent agents working together to provide a complete automation solution
+                for managing communications, scheduling, and information retrieval through natural language interactions.
+            </p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-robot"></i>
+                <h4>Executive Agent JR</h4>
+                <p>Main user interaction agent through Telegram that coordinates multiple productivity tools using AI, processes both text and voice inputs, and maintains conversation memory.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-envelope"></i>
+                <h4>Email Agent</h4>
+                <p>Automates email management through Gmail API with capabilities for sending, replying, labeling, and organizing messages with a natural human-like tone.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Calendar Agent</h4>
+                <p>Manages Google Calendar events with features for creating, editing, and deleting appointments, including automatic Google Meet link generation and attendee management.</p>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-card">
+                <h3><i class="fas fa-cogs"></i> Technologies</h3>
+                <ul>
+                    <li>n8n for workflow automation and orchestration</li>
+                    <li>LangChain Tools Agent framework</li>
+                    <li>OpenAI Chat Models for natural language understanding</li>
+                    <li>Anthropic Claude for human-like email composition</li>
+                    <li>Google APIs (Gmail, Calendar, Sheets)</li>
+                    <li>SerpAPI for real-time information retrieval</li>
+                    <li>Telegram Bot API</li>
+                    <li>Speech-to-Text for voice note processing</li>
+                </ul>
+            </div>
+            <div class="detail-card">
+                <h3><i class="fas fa-code"></i> Implementation</h3>
+                <p>Key technical aspects of this project:</p>
+                <ul>
+                    <li>Agent orchestration through n8n workflows</li>
+                    <li>LangChain Tools for decision making and task routing</li>
+                    <li>API integrations with Google services</li>
+                    <li>Simple Memory system for session persistence</li>
+                    <li>JSON parsing for structured data exchange</li>
+                    <li>Conditional logic for adaptive response handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3><i class="fas fa-lightbulb"></i> Agent Capabilities</h3>
+            
+            <h4>Executive Agent JR</h4>
+            <ul>
+                <li><strong>Tools:</strong>
+                    <ul>
+                        <li>contact_tool: Query contacts in Google Sheets</li>
+                        <li>contact_tool_update: Create/update contacts</li>
+                        <li>calendarTool: Connect to Calendar Agent</li>
+                        <li>emailTool: Connect to Email Agent</li>
+                        <li>serpapi: Search for news and updated data</li>
+                        <li>calculator: Solve formulas</li>
+                    </ul>
+                </li>
+                <li><strong>Input:</strong> Text and voice through Telegram</li>
+                <li><strong>Output:</strong> Formatted response + tool execution in Telegram</li>
+                <li><strong>Memory:</strong> Per session via Simple Memory</li>
+            </ul>
+            
+            <h4>Email Agent</h4>
+            <ul>
+                <li><strong>Tools:</strong>
+                    <ul>
+                        <li>Send Email: Send new emails</li>
+                        <li>Email Reply: Reply to emails</li>
+                        <li>Label Emails: Tag messages</li>
+                        <li>Delete Message: Remove emails</li>
+                        <li>Create Draft: Save drafts</li>
+                        <li>Get Emails: Retrieve messages</li>
+                        <li>Get Labels: List tags</li>
+                        <li>Mark Unread: Mark as unread</li>
+                        <li>contact_tool: Check contacts before sending</li>
+                    </ul>
+                </li>
+                <li><strong>Entry point:</strong> Called by the Executive Agent</li>
+                <li><strong>Output:</strong> Success or retry notification</li>
+            </ul>
+            
+            <h4>Calendar Agent</h4>
+            <ul>
+                <li><strong>Tools:</strong>
+                    <ul>
+                        <li>Create Event: Schedule new events</li>
+                        <li>Create Event with Attendee: Include participants</li>
+                        <li>Create Meet: Generate Google Meet link</li>
+                        <li>Update Event: Modify existing events</li>
+                        <li>Delete Event: Remove events</li>
+                        <li>Get Events: List upcoming events</li>
+                        <li>contact_tool: Verify participant information</li>
+                    </ul>
+                </li>
+                <li><strong>Entry point:</strong> Called by the Executive Agent</li>
+                <li><strong>Output:</strong> Success or error status</li>
+            </ul>
+        </div>
+
+        <div class="detail-card">
+            <h3><i class="fas fa-exchange-alt"></i> Agent Integration</h3>
+            <table class="integration-table">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Executive Agent JR</td>
+                        <td>Email Agent</td>
+                        <td>Compose and send emails to contacts</td>
+                    </tr>
+                    <tr>
+                        <td>Executive Agent JR</td>
+                        <td>Calendar Agent</td>
+                        <td>Schedule meetings with attendees</td>
+                    </tr>
+                    <tr>
+                        <td>Executive Agent JR</td>
+                        <td>SerpAPI</td>
+                        <td>Search for updated information from the prompt</td>
+                    </tr>
+                    <tr>
+                        <td>Executive Agent JR</td>
+                        <td>Google Sheets</td>
+                        <td>Register created/updated contacts</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4>AI Models Applied</h4>
+            <table class="ai-models-table">
+                <thead>
+                    <tr>
+                        <th>AI Engine</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OpenAI Chat Model</td>
+                        <td>Command understanding, structured generation</td>
+                    </tr>
+                    <tr>
+                        <td>Anthropic Claude</td>
+                        <td>Personalized emails, more human-like language</td>
+                    </tr>
+                    <tr>
+                        <td>LangChain Agent</td>
+                        <td>Intelligent decision on which tool to use</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="project-actions">
+            <a href="https://github.com/jarondonp/ai-executive-agents" class="btn btn-primary" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+            <a href="index.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Return to Portfolio
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Javier Rondon. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/jarondonp" target="_blank" rel="noopener" title="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jarondonp" target="_blank" rel="noopener" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/jarondonp" target="_blank" rel="noopener" title="Twitter Profile"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality 
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                
+                const icon = themeToggle.querySelector('i');
+                if (body.classList.contains('dark-theme')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Mobile menu
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

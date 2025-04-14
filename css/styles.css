@@ -879,3 +879,79 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* Table styles for project details */
+.integration-table, 
+.ai-models-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.integration-table th, 
+.ai-models-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.integration-table td, 
+.ai-models-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.integration-table tr:last-child td, 
+.ai-models-table tr:last-child td {
+    border-bottom: none;
+}
+
+.integration-table tr:nth-child(even), 
+.ai-models-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.dark-theme .integration-table th, 
+.dark-theme .ai-models-table th {
+    background-color: #4fa3e0;
+}
+
+.dark-theme .integration-table tr:nth-child(even), 
+.dark-theme .ai-models-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .integration-table td, 
+.dark-theme .ai-models-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .integration-table, 
+    .ai-models-table {
+        font-size: 0.9rem;
+    }
+    
+    .integration-table th, 
+    .ai-models-table th,
+    .integration-table td, 
+    .ai-models-table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .integration-table, 
+    .ai-models-table {
+        font-size: 0.8rem;
+    }
+    
+    .integration-table th, 
+    .ai-models-table th {
+        font-size: 0.85rem;
+    }
+}
