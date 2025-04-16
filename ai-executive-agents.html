@@ -29,129 +29,226 @@
     </header>
 
     <main class="project-container">
-        <div class="project-header">
-            <a href="index.html" class="return-link">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
-            </a>
+        <!-- Return Link -->
+        <a href="index.html" class="return-link">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
             <h1>AI Executive Agents Ecosystem in n8n</h1>
-            <div class="project-tags">
-                <span>AI Agents</span>
-                <span>Automation</span>
-                <span>n8n</span>
-                <span>LangChain</span>
-                <span>API Integration</span>
-            </div>
-            <p class="project-description">
-                A comprehensive ecosystem of intelligent agents working together to provide a complete automation solution
-                for managing communications, scheduling, and information retrieval through natural language interactions.
-            </p>
-        </div>
+            <h2>An intelligent automation system that integrates multiple agents (email, calendar, search, and contacts) using natural language interactions via Telegram.</h2>
+            <p>This project demonstrates how AI agents can collaborate seamlessly through a central executive interface, automating email and calendar tasks, managing contacts, and retrieving information using APIs — all through text and voice commands sent from Telegram.</p>
+        </section>
 
-        <div class="features-list">
-            <div class="feature-item">
-                <i class="fas fa-robot"></i>
-                <h4>Executive Agent JR</h4>
-                <p>Main user interaction agent through Telegram that coordinates multiple productivity tools using AI, processes both text and voice inputs, and maintains conversation memory.</p>
+        <!-- Agent Overview -->
+        <section>
+            <h2 class="section-title">🤖 Agent Overview</h2>
+            <div class="agent-cards">
+                <div class="agent-card">
+                    <div class="agent-card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Executive Agent JR</h3>
+                    <p>Central coordinator. Interprets user commands, selects the right agent, and orchestrates tool execution.</p>
+                    <div class="agent-card-image">
+                        <img src="img/executive-agent.jpg" alt="Executive Agent JR Interface" onerror="this.src='https://via.placeholder.com/300x200?text=Executive+Agent'">
+                    </div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Agent</h3>
+                    <p>Manages email operations (send, reply, label, delete, draft) using Gmail API.</p>
+                    <div class="agent-card-image">
+                        <img src="img/email-agent.jpg" alt="Email Agent Interface" onerror="this.src='https://via.placeholder.com/300x200?text=Email+Agent'">
+                    </div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Calendar Agent</h3>
+                    <p>Manages Google Calendar (create, update, delete events, generate Meet links).</p>
+                    <div class="agent-card-image">
+                        <img src="img/calendar-agent.jpg" alt="Calendar Agent Interface" onerror="this.src='https://via.placeholder.com/300x200?text=Calendar+Agent'">
+                    </div>
+                </div>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-envelope"></i>
-                <h4>Email Agent</h4>
-                <p>Automates email management through Gmail API with capabilities for sending, replying, labeling, and organizing messages with a natural human-like tone.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-calendar-alt"></i>
-                <h4>Calendar Agent</h4>
-                <p>Manages Google Calendar events with features for creating, editing, and deleting appointments, including automatic Google Meet link generation and attendee management.</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="project-details">
-            <div class="detail-card">
-                <h3><i class="fas fa-cogs"></i> Technologies</h3>
-                <ul>
-                    <li>n8n for workflow automation and orchestration</li>
-                    <li>LangChain Tools Agent framework</li>
-                    <li>OpenAI Chat Models for natural language understanding</li>
-                    <li>Anthropic Claude for human-like email composition</li>
-                    <li>Google APIs (Gmail, Calendar, Sheets)</li>
-                    <li>SerpAPI for real-time information retrieval</li>
-                    <li>Telegram Bot API</li>
-                    <li>Speech-to-Text for voice note processing</li>
-                </ul>
+        <!-- Technical Architecture -->
+        <section class="architecture-section">
+            <h2>System Architecture</h2>
+            <p>This multi-agent system is built using the n8n automation framework and integrates with multiple tools via APIs. Each agent operates autonomously but can also be orchestrated by the central Executive Agent JR for complex tasks.</p>
+            <div class="architecture-image">
+                <img src="img/architecture.jpg" alt="AI Agents System Architecture" id="architectureImg" onerror="this.src='https://via.placeholder.com/800x500?text=System+Architecture'" onclick="enlargeImage(this.src)">
             </div>
-            <div class="detail-card">
-                <h3><i class="fas fa-code"></i> Implementation</h3>
-                <p>Key technical aspects of this project:</p>
-                <ul>
-                    <li>Agent orchestration through n8n workflows</li>
-                    <li>LangChain Tools for decision making and task routing</li>
-                    <li>API integrations with Google services</li>
-                    <li>Simple Memory system for session persistence</li>
-                    <li>JSON parsing for structured data exchange</li>
-                    <li>Conditional logic for adaptive response handling</li>
-                </ul>
-            </div>
-        </div>
+        </section>
 
-        <div class="detail-card">
-            <h3><i class="fas fa-lightbulb"></i> Agent Capabilities</h3>
+        <!-- Interactive Simulation -->
+        <section class="simulation-section">
+            <h2>Simulation: Real-world Use Cases</h2>
+            <p>Below are simulated interactions between the user and the Executive Agent JR via Telegram. These show how voice or text commands trigger automated workflows:</p>
             
-            <h4>Executive Agent JR</h4>
-            <ul>
-                <li><strong>Tools:</strong>
-                    <ul>
-                        <li>contact_tool: Query contacts in Google Sheets</li>
-                        <li>contact_tool_update: Create/update contacts</li>
-                        <li>calendarTool: Connect to Calendar Agent</li>
-                        <li>emailTool: Connect to Email Agent</li>
-                        <li>serpapi: Search for news and updated data</li>
-                        <li>calculator: Solve formulas</li>
-                    </ul>
-                </li>
-                <li><strong>Input:</strong> Text and voice through Telegram</li>
-                <li><strong>Output:</strong> Formatted response + tool execution in Telegram</li>
-                <li><strong>Memory:</strong> Per session via Simple Memory</li>
-            </ul>
-            
-            <h4>Email Agent</h4>
-            <ul>
-                <li><strong>Tools:</strong>
-                    <ul>
-                        <li>Send Email: Send new emails</li>
-                        <li>Email Reply: Reply to emails</li>
-                        <li>Label Emails: Tag messages</li>
-                        <li>Delete Message: Remove emails</li>
-                        <li>Create Draft: Save drafts</li>
-                        <li>Get Emails: Retrieve messages</li>
-                        <li>Get Labels: List tags</li>
-                        <li>Mark Unread: Mark as unread</li>
-                        <li>contact_tool: Check contacts before sending</li>
-                    </ul>
-                </li>
-                <li><strong>Entry point:</strong> Called by the Executive Agent</li>
-                <li><strong>Output:</strong> Success or retry notification</li>
-            </ul>
-            
-            <h4>Calendar Agent</h4>
-            <ul>
-                <li><strong>Tools:</strong>
-                    <ul>
-                        <li>Create Event: Schedule new events</li>
-                        <li>Create Event with Attendee: Include participants</li>
-                        <li>Create Meet: Generate Google Meet link</li>
-                        <li>Update Event: Modify existing events</li>
-                        <li>Delete Event: Remove events</li>
-                        <li>Get Events: List upcoming events</li>
-                        <li>contact_tool: Verify participant information</li>
-                    </ul>
-                </li>
-                <li><strong>Entry point:</strong> Called by the Executive Agent</li>
-                <li><strong>Output:</strong> Success or error status</li>
-            </ul>
-        </div>
+            <div class="simulation-cards">
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Schedule a meeting</h3>
+                        <p>Command:</p>
+                        <code class="simulation-command">"Schedule a meeting with Laura tomorrow at 4PM"</code>
+                    </div>
+                    <div class="simulation-result">
+                        <img src="img/sim-calendar.jpg" alt="Calendar Schedule Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Calendar+Simulation'">
+                    </div>
+                </div>
+                
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Check unread emails</h3>
+                        <p>Command:</p>
+                        <code class="simulation-command">"Do I have any unread emails today?"</code>
+                    </div>
+                    <div class="simulation-result">
+                        <img src="img/sim-email.jpg" alt="Email Check Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Email+Simulation'">
+                    </div>
+                </div>
+                
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Send a quick email</h3>
+                        <p>Command:</p>
+                        <code class="simulation-command">"Send an email to Carlos: Don't forget tomorrow's meeting."</code>
+                    </div>
+                    <div class="simulation-result">
+                        <img src="img/sim-send-email.jpg" alt="Send Email Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Send+Email+Simulation'">
+                    </div>
+                </div>
+                
+                <div class="simulation-card">
+                    <div class="simulation-info">
+                        <h3>Search news</h3>
+                        <p>Command:</p>
+                        <code class="simulation-command">"Find recent news about AI agents"</code>
+                    </div>
+                    <div class="simulation-result">
+                        <img src="img/sim-search.jpg" alt="Search News Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Search+Simulation'">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="detail-card">
-            <h3><i class="fas fa-exchange-alt"></i> Agent Integration</h3>
+        <!-- Technologies Used -->
+        <section>
+            <h2 class="section-title">🧠 Technologies Used</h2>
+            
+            <div class="tech-columns">
+                <div class="tech-column">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>n8n (automation and orchestration)</li>
+                        <li>LangChain Tools Agent framework</li>
+                        <li>OpenAI GPT + Anthropic Claude</li>
+                        <li>Google APIs: Gmail, Calendar, Sheets</li>
+                        <li>Telegram Bot API</li>
+                        <li>SerpAPI (news and info search)</li>
+                        <li>Google Sheets (contact memory)</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-column">
+                    <h3>Additional Features</h3>
+                    <ul>
+                        <li>Voice-to-text transcription (Speech-to-Text)</li>
+                        <li>JSON parsing & conditional logic</li>
+                        <li>Memory system (Simple Memory per session)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities by Agent -->
+        <section>
+            <h2 class="section-title">🧩 Capabilities by Agent</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-robot"></i> Executive Agent JR</h3>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li>Acts as main user interface</li>
+                                <li>Selects tools and agents based on the input</li>
+                                <li>Supports both voice and text</li>
+                                <li>Routes data between tools</li>
+                                <li>contact_tool: Query contacts in Google Sheets</li>
+                                <li>contact_tool_update: Create/update contacts</li>
+                                <li>calendarTool: Connect to Calendar Agent</li>
+                                <li>emailTool: Connect to Email Agent</li>
+                                <li>serpapi: Search for news and updated data</li>
+                                <li>calculator: Solve formulas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-envelope"></i> Email Agent</h3>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li>Compose, send, reply</li>
+                                <li>Add labels, draft, or delete messages</li>
+                                <li>Mark as unread/read</li>
+                                <li>Send Email: Send new emails</li>
+                                <li>Email Reply: Reply to emails</li>
+                                <li>Label Emails: Tag messages</li>
+                                <li>Delete Message: Remove emails</li>
+                                <li>Create Draft: Save drafts</li>
+                                <li>Get Emails: Retrieve messages</li>
+                                <li>Get Labels: List tags</li>
+                                <li>contact_tool: Check contacts before sending</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-calendar-alt"></i> Calendar Agent</h3>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li>Create/Update/Delete events</li>
+                                <li>Add attendees</li>
+                                <li>Generate Google Meet links</li>
+                                <li>Create Event: Schedule new events</li>
+                                <li>Create Event with Attendee: Include participants</li>
+                                <li>Create Meet: Generate Google Meet link</li>
+                                <li>Update Event: Modify existing events</li>
+                                <li>Delete Event: Remove events</li>
+                                <li>Get Events: List upcoming events</li>
+                                <li>contact_tool: Verify participant information</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agent Integration Matrix -->
+        <section>
+            <h2 class="section-title">🔄 Agent Integration Matrix</h2>
+            
             <table class="integration-table">
                 <thead>
                     <tr>
@@ -164,27 +261,28 @@
                     <tr>
                         <td>Executive Agent JR</td>
                         <td>Email Agent</td>
-                        <td>Compose and send emails to contacts</td>
+                        <td>Compose and send emails</td>
                     </tr>
                     <tr>
                         <td>Executive Agent JR</td>
                         <td>Calendar Agent</td>
-                        <td>Schedule meetings with attendees</td>
-                    </tr>
-                    <tr>
-                        <td>Executive Agent JR</td>
-                        <td>SerpAPI</td>
-                        <td>Search for updated information from the prompt</td>
+                        <td>Schedule events</td>
                     </tr>
                     <tr>
                         <td>Executive Agent JR</td>
                         <td>Google Sheets</td>
-                        <td>Register created/updated contacts</td>
+                        <td>Manage contact data</td>
+                    </tr>
+                    <tr>
+                        <td>Executive Agent JR</td>
+                        <td>SerpAPI</td>
+                        <td>Search external info</td>
                     </tr>
                 </tbody>
             </table>
             
-            <h4>AI Models Applied</h4>
+            <h3 class="section-subtitle">🧠 AI Models Applied</h3>
+            
             <table class="ai-models-table">
                 <thead>
                     <tr>
@@ -194,21 +292,36 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>OpenAI Chat Model</td>
-                        <td>Command understanding, structured generation</td>
+                        <td>OpenAI GPT</td>
+                        <td>Understand & generate structured responses</td>
                     </tr>
                     <tr>
                         <td>Anthropic Claude</td>
-                        <td>Personalized emails, more human-like language</td>
+                        <td>Natural email generation</td>
                     </tr>
                     <tr>
                         <td>LangChain Agent</td>
-                        <td>Intelligent decision on which tool to use</td>
+                        <td>Agent coordination & tool selection</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </section>
 
+        <!-- Call to Action -->
+        <section class="call-to-action">
+            <h3>Interested in a personalized automation ecosystem?</h3>
+            <p>Let's connect to discuss how this automation ecosystem can be customized for your team or organization.</p>
+            <div>
+                <a href="https://linkedin.com/in/jarondonp" class="social-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                </a>
+                <a href="mailto:info@javierrondon.com" class="social-btn">
+                    <i class="fas fa-envelope"></i> Send Email
+                </a>
+            </div>
+        </section>
+
+        <!-- Project Actions -->
         <div class="project-actions">
             <a href="https://github.com/jarondonp/ai-executive-agents" class="btn btn-primary" target="_blank" rel="noopener">
                 <i class="fab fa-github"></i> View on GitHub
@@ -231,6 +344,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Overlay for enlarged architecture image -->
+    <div class="enlarge-overlay" id="imageOverlay">
+        <span class="close-btn" onclick="closeOverlay()">&times;</span>
+        <img id="enlargedImg" src="" alt="Enlarged architecture diagram">
+    </div>
 
     <script>
         // Theme toggle functionality 
@@ -267,6 +386,38 @@
                 menuBtn.classList.toggle('active');
             });
         });
+        
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-item').forEach(accordion => {
+                accordion.classList.remove('active');
+            });
+            
+            // Open clicked accordion if it wasn't already open
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+        
+        // Image enlargement functionality
+        function enlargeImage(src) {
+            const overlay = document.getElementById('imageOverlay');
+            const enlargedImg = document.getElementById('enlargedImg');
+            
+            enlargedImg.src = src;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
