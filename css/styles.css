@@ -1493,6 +1493,13 @@ img {
     object-fit: cover;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.agent-card-image img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero section específica para páginas de proyecto */
