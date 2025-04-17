@@ -93,14 +93,45 @@
             <p>Below are simulated interactions between the user and the Executive Agent JR via Telegram. These show how voice or text commands trigger automated workflows:</p>
             
             <div class="simulation-cards">
-                <div class="simulation-card">
-                    <div class="simulation-info">
-                        <h3>Schedule a meeting</h3>
-                        <p>Command:</p>
-                        <code class="simulation-command">"Schedule a meeting with Laura tomorrow at 4PM"</code>
+                <div class="carousel-container">
+                    <div class="carousel-slides" id="scenarioCarousel">
+                        <div class="carousel-slide">
+                            <img src="img/escenario01-01.JPG" alt="Escenario de Automatización 1">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/escenario01-02.JPG" alt="Escenario de Automatización 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/escenario01-03.JPG" alt="Escenario de Automatización 3">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/escenario01-04.JPG" alt="Escenario de Automatización 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/escenario01-05.JPG" alt="Escenario de Automatización 5">
+                        </div>
                     </div>
-                    <div class="simulation-result">
-                        <img src="img/sim-calendar.jpg" alt="Calendar Schedule Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Calendar+Simulation'">
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-control" onclick="moveCarousel(-1)" title="Slide anterior" aria-label="Slide anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-control" onclick="moveCarousel(1)" title="Siguiente slide" aria-label="Siguiente slide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-indicators">
+                        <span class="carousel-indicator active" onclick="jumpToSlide(0)"></span>
+                        <span class="carousel-indicator" onclick="jumpToSlide(1)"></span>
+                        <span class="carousel-indicator" onclick="jumpToSlide(2)"></span>
+                        <span class="carousel-indicator" onclick="jumpToSlide(3)"></span>
+                        <span class="carousel-indicator" onclick="jumpToSlide(4)"></span>
+                    </div>
+                    
+                    <div class="carousel-caption">
+                        <h3>Escenarios de Automatización con Executive Agent JR</h3>
+                        <p>Interacciones vía Telegram que muestran flujos de trabajo automatizados</p>
                     </div>
                 </div>
                 
@@ -418,6 +449,77 @@
             overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.carousel-slide').length;
+        const carouselSlides = document.querySelector('.carousel-slides');
+        const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+        
+        function updateCarousel() {
+            // Actualizar la posición del carrusel
+            if (carouselSlides) {
+                carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            // Actualizar los indicadores
+            carouselIndicators.forEach((indicator, index) => {
+                indicator.classList.remove('active');
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                }
+            });
+        }
+        
+        function moveCarousel(direction) {
+            if (direction === 1) {
+                currentSlide++;
+                if (currentSlide >= totalSlides) {
+                    currentSlide = 0;
+                }
+            } else if (direction === -1) {
+                currentSlide--;
+                if (currentSlide < 0) {
+                    currentSlide = totalSlides - 1;
+                }
+            }
+            
+            updateCarousel();
+        }
+        
+        function jumpToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+        
+        // Iniciar el carrusel automático
+        let carouselInterval;
+        
+        function startCarouselInterval() {
+            carouselInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 5000); // Cambiar slide cada 5 segundos
+        }
+        
+        function stopCarouselInterval() {
+            clearInterval(carouselInterval);
+        }
+        
+        // Iniciar el carrusel cuando la página esté cargada
+        document.addEventListener('DOMContentLoaded', () => {
+            // Resto del código de inicialización que ya existe
+            
+            // Iniciar el carrusel
+            updateCarousel();
+            startCarouselInterval();
+            
+            // Pausar el carrusel al pasar el ratón
+            const carouselContainer = document.querySelector('.carousel-container');
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', stopCarouselInterval);
+                carouselContainer.addEventListener('mouseleave', startCarouselInterval);
+            }
+        });
     </script>
 </body>
 </html>
