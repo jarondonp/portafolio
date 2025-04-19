@@ -204,7 +204,7 @@
                                         <img src="img/escenario03-01.JPG" alt="Search News Workflow - Step 1" onclick="enlargeImage(this.src)">
                                     </div>
                                     <div class="carousel-slide video-slide">
-                                        <video id="carouselVideo" autoplay muted loop playsinline>
+                                        <video id="carouselVideo" autoplay muted controls playsinline style="cursor:pointer">
                                             <source src="img/n8nescenario03.mp4" type="video/mp4">
                                             Tu navegador no soporta el elemento de video.
                                         </video>
@@ -697,14 +697,14 @@
 
         function getSearchSlideDuration(slideIndex) {
             // Slide 0 (escenario03-01.JPG) should last 1 min (60000 ms)
-            // Slide 1 (video) should last until video ends or at least 1 min
+            // Slide 1 (video) should last exactamente la duración del video (sin mínimo)
             if (slideIndex === 0) return 60000;
             if (slideIndex === 1) {
                 const video = document.getElementById('carouselVideo');
                 if (video && video.duration && !isNaN(video.duration)) {
-                    return Math.max(video.duration * 1000, 60000); // At least 1 min or video duration
+                    return video.duration * 1000; // Exactamente la duración del video
                 }
-                return 60000;
+                return 120000; // Si no se puede detectar duración, da 2 min por defecto
             }
             return 5000;
         }
@@ -714,23 +714,16 @@
             clearTimeout(searchVideoTimeout);
             let duration = getSearchSlideDuration(searchCurrentSlide);
             if (searchCurrentSlide === 1) {
-                // For video slide, wait for video to end or at least 1 min
+                // Para el video: avanza solo cuando termine
                 const video = document.getElementById('carouselVideo');
                 if (video) {
-                    // If video is shorter than 1 min, fallback to 1 min
-                    let videoTimeout = Math.max(video.duration * 1000, 60000);
-                    // If video is playing, use its duration
-                    searchVideoTimeout = setTimeout(() => {
-                        moveSearchCarousel(1);
-                    }, videoTimeout);
-                    // Also move to next slide on video end
                     video.onended = () => {
                         moveSearchCarousel(1);
                     };
                     return;
                 }
             }
-            // Default for other slides
+            // Default para otras slides
             searchCarouselInterval = setTimeout(() => {
                 moveSearchCarousel(1);
             }, duration);
@@ -741,6 +734,7 @@
             if (searchCarouselSlides) {
                 searchCarouselSlides.style.transform = `translateX(-${searchCurrentSlide * 100}%)`;
             }
+            
             // Actualizar los indicadores
             const indicators = document.querySelectorAll('#searchCarousel ~ .carousel-indicators .carousel-indicator');
             indicators.forEach((indicator, index) => {
@@ -756,6 +750,7 @@
             clearInterval(searchCarouselInterval);
             clearTimeout(searchVideoTimeout);
             if (searchCurrentSlide === 1) {
+                // Para el video: avanza solo cuando termine
                 const video = document.getElementById('carouselVideo');
                 if (video) {
                     video.pause();
@@ -773,6 +768,7 @@
                     searchCurrentSlide = searchTotalSlides - 1;
                 }
             }
+            
             updateSearchCarousel();
         }
 
@@ -780,6 +776,7 @@
             clearInterval(searchCarouselInterval);
             clearTimeout(searchVideoTimeout);
             if (searchCurrentSlide === 1) {
+                // Para el video: avanza solo cuando termine
                 const video = document.getElementById('carouselVideo');
                 if (video) {
                     video.pause();
