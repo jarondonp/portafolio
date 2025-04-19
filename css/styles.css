@@ -1683,6 +1683,14 @@ img {
     max-height: 500px; /* Altura máxima para controlar el tamaño */
 }
 
+.carousel-slide video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: 500px;
+}
+
 .carousel-caption {
     position: absolute;
     bottom: 0;
@@ -1838,4 +1846,8 @@ img {
 
 .scenario-inner {
     padding: 1rem;
+}
+
+.video-slide {
+    background-color: #000;
 }
