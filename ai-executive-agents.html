@@ -144,43 +144,44 @@
                     </div>
                 </div>
                 
-                <div class="simulation-card">
-                    <div class="simulation-info">
-                        <h3>Send a quick email</h3>
-                        <p>Command:</p>
-                        <code class="simulation-command">"Send an email to Carlos: Don't forget tomorrow's meeting."</code>
+                <div class="scenario-accordion">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3><i class="fas fa-envelope"></i> Send a quick email</h3>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
                     </div>
-                    <div class="simulation-result">
-                        <div class="carousel-container">
-                            <div class="carousel-caption">
-                                <h3>Quick Email Workflow</h3>
-                                <p>Click on images to view full conversation details</p>
-                            </div>
-                            <div class="carousel-slides" id="emailCarousel">
-                                <div class="carousel-slide">
-                                    <img src="img/escenario02-01.JPG" alt="Email Workflow - Step 1" onclick="enlargeImage(this.src)">
+                    <div class="scenario-content">
+                        <div class="scenario-inner">
+                            <div class="carousel-container">
+                                <div class="carousel-caption">
+                                    <h3>Quick Email Workflow</h3>
+                                    <p>Click on images to view full conversation details</p>
                                 </div>
-                                <div class="carousel-slide">
-                                    <img src="img/escenario02-02.JPG" alt="Email Workflow - Step 2" onclick="enlargeImage(this.src)">
+                                <div class="carousel-slides" id="emailCarousel">
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario02-01.JPG" alt="Email Workflow - Step 1" onclick="enlargeImage(this.src)">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario02-02.JPG" alt="Email Workflow - Step 2" onclick="enlargeImage(this.src)">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario02-03.JPG" alt="Email Workflow - Step 3" onclick="enlargeImage(this.src)">
+                                    </div>
                                 </div>
-                                <div class="carousel-slide">
-                                    <img src="img/escenario02-03.JPG" alt="Email Workflow - Step 3" onclick="enlargeImage(this.src)">
+                                
+                                <div class="carousel-controls">
+                                    <button class="carousel-control" onclick="moveEmailCarousel(-1)" title="Previous step" aria-label="Previous step">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="carousel-control" onclick="moveEmailCarousel(1)" title="Next step" aria-label="Next step">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
                                 </div>
-                            </div>
-                            
-                            <div class="carousel-controls">
-                                <button class="carousel-control" onclick="moveEmailCarousel(-1)" title="Previous step" aria-label="Previous step">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <button class="carousel-control" onclick="moveEmailCarousel(1)" title="Next step" aria-label="Next step">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="carousel-indicators">
-                                <span class="carousel-indicator active" onclick="jumpToEmailSlide(0)"></span>
-                                <span class="carousel-indicator" onclick="jumpToEmailSlide(1)"></span>
-                                <span class="carousel-indicator" onclick="jumpToEmailSlide(2)"></span>
+                                
+                                <div class="carousel-indicators">
+                                    <span class="carousel-indicator active" onclick="jumpToEmailSlide(0)"></span>
+                                    <span class="carousel-indicator" onclick="jumpToEmailSlide(1)"></span>
+                                    <span class="carousel-indicator" onclick="jumpToEmailSlide(2)"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -586,7 +587,7 @@
         let emailCurrentSlide = 0;
         const emailTotalSlides = document.querySelectorAll('#emailCarousel .carousel-slide').length;
         const emailCarouselSlides = document.querySelector('#emailCarousel');
-        const emailCarouselIndicators = document.querySelectorAll('#emailCarousel + .carousel-indicators .carousel-indicator');
+        const emailCarouselIndicators = document.querySelectorAll('#emailCarousel ~ .carousel-indicators .carousel-indicator');
         
         function updateEmailCarousel() {
             // Actualizar la posición del carrusel
@@ -595,7 +596,8 @@
             }
             
             // Actualizar los indicadores
-            emailCarouselIndicators.forEach((indicator, index) => {
+            const indicators = document.querySelectorAll('#emailCarousel ~ .carousel-indicators .carousel-indicator');
+            indicators.forEach((indicator, index) => {
                 indicator.classList.remove('active');
                 if (index === emailCurrentSlide) {
                     indicator.classList.add('active');
