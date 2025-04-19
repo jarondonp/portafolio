@@ -210,6 +210,9 @@
                                         </video>
                                     </div>
                                     <div class="carousel-slide">
+                                        <img src="img/escenario03-02.JPG" alt="Search News Workflow - Step 2" onclick="enlargeImage(this.src)">
+                                    </div>
+                                    <div class="carousel-slide">
                                         <img src="img/escenario03-03.JPG" alt="Search News Workflow - Step 3" onclick="enlargeImage(this.src)">
                                     </div>
                                 </div>
@@ -227,6 +230,7 @@
                                     <span class="carousel-indicator active" onclick="jumpToSearchSlide(0)"></span>
                                     <span class="carousel-indicator" onclick="jumpToSearchSlide(1)"></span>
                                     <span class="carousel-indicator" onclick="jumpToSearchSlide(2)"></span>
+                                    <span class="carousel-indicator" onclick="jumpToSearchSlide(3)"></span>
                                 </div>
                             </div>
                         </div>
@@ -687,13 +691,56 @@
         const searchTotalSlides = document.querySelectorAll('#searchCarousel .carousel-slide').length;
         const searchCarouselSlides = document.querySelector('#searchCarousel');
         const searchCarouselIndicators = document.querySelectorAll('#searchCarousel ~ .carousel-indicators .carousel-indicator');
-        
+        let searchCarouselInterval = null;
+        let searchVideoTimeout = null;
+        let lastSearchInterval = 5000; // Default for non-video slides
+
+        function getSearchSlideDuration(slideIndex) {
+            // Slide 0 (escenario03-01.JPG) should last 1 min (60000 ms)
+            // Slide 1 (video) should last until video ends or at least 1 min
+            if (slideIndex === 0) return 60000;
+            if (slideIndex === 1) {
+                const video = document.getElementById('carouselVideo');
+                if (video && video.duration && !isNaN(video.duration)) {
+                    return Math.max(video.duration * 1000, 60000); // At least 1 min or video duration
+                }
+                return 60000;
+            }
+            return 5000;
+        }
+
+        function scheduleNextSearchSlide() {
+            clearInterval(searchCarouselInterval);
+            clearTimeout(searchVideoTimeout);
+            let duration = getSearchSlideDuration(searchCurrentSlide);
+            if (searchCurrentSlide === 1) {
+                // For video slide, wait for video to end or at least 1 min
+                const video = document.getElementById('carouselVideo');
+                if (video) {
+                    // If video is shorter than 1 min, fallback to 1 min
+                    let videoTimeout = Math.max(video.duration * 1000, 60000);
+                    // If video is playing, use its duration
+                    searchVideoTimeout = setTimeout(() => {
+                        moveSearchCarousel(1);
+                    }, videoTimeout);
+                    // Also move to next slide on video end
+                    video.onended = () => {
+                        moveSearchCarousel(1);
+                    };
+                    return;
+                }
+            }
+            // Default for other slides
+            searchCarouselInterval = setTimeout(() => {
+                moveSearchCarousel(1);
+            }, duration);
+        }
+
         function updateSearchCarousel() {
             // Actualizar la posición del carrusel
             if (searchCarouselSlides) {
                 searchCarouselSlides.style.transform = `translateX(-${searchCurrentSlide * 100}%)`;
             }
-            
             // Actualizar los indicadores
             const indicators = document.querySelectorAll('#searchCarousel ~ .carousel-indicators .carousel-indicator');
             indicators.forEach((indicator, index) => {
@@ -702,9 +749,19 @@
                     indicator.classList.add('active');
                 }
             });
+            scheduleNextSearchSlide();
         }
-        
+
         function moveSearchCarousel(direction) {
+            clearInterval(searchCarouselInterval);
+            clearTimeout(searchVideoTimeout);
+            if (searchCurrentSlide === 1) {
+                const video = document.getElementById('carouselVideo');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            }
             if (direction === 1) {
                 searchCurrentSlide++;
                 if (searchCurrentSlide >= searchTotalSlides) {
@@ -716,13 +773,44 @@
                     searchCurrentSlide = searchTotalSlides - 1;
                 }
             }
-            
             updateSearchCarousel();
         }
-        
+
         function jumpToSearchSlide(slideIndex) {
+            clearInterval(searchCarouselInterval);
+            clearTimeout(searchVideoTimeout);
+            if (searchCurrentSlide === 1) {
+                const video = document.getElementById('carouselVideo');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            }
             searchCurrentSlide = slideIndex;
             updateSearchCarousel();
+        }
+
+        // Iniciar el carrusel de búsqueda
+        updateSearchCarousel();
+
+        // Pausar/continuar automático al pasar el ratón
+        const searchCarouselContainer = document.querySelector('#searchCarousel').closest('.carousel-container');
+        if (searchCarouselContainer) {
+            searchCarouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(searchCarouselInterval);
+                clearTimeout(searchVideoTimeout);
+                if (searchCurrentSlide === 1) {
+                    const video = document.getElementById('carouselVideo');
+                    if (video) video.pause();
+                }
+            });
+            searchCarouselContainer.addEventListener('mouseleave', () => {
+                if (searchCurrentSlide === 1) {
+                    const video = document.getElementById('carouselVideo');
+                    if (video) video.play();
+                }
+                scheduleNextSearchSlide();
+            });
         }
         
         // Funcionalidad del acordeón para escenarios
