@@ -187,6 +187,49 @@
                     </div>
                 </div>
                 
+                <div class="scenario-accordion">
+                    <div class="scenario-header" onclick="toggleScenario(this)">
+                        <h3><i class="fas fa-search"></i> Search news</h3>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="scenario-content">
+                        <div class="scenario-inner">
+                            <div class="carousel-container">
+                                <div class="carousel-caption">
+                                    <h3>Search News Workflow</h3>
+                                    <p>Click on images to view full conversation details</p>
+                                </div>
+                                <div class="carousel-slides" id="searchCarousel">
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario03-01.JPG" alt="Search News Workflow - Step 1" onclick="enlargeImage(this.src)">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario03-02.JPG" alt="Search News Workflow - Step 2" onclick="enlargeImage(this.src)">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="img/escenario03-03.JPG" alt="Search News Workflow - Step 3" onclick="enlargeImage(this.src)">
+                                    </div>
+                                </div>
+                                
+                                <div class="carousel-controls">
+                                    <button class="carousel-control" onclick="moveSearchCarousel(-1)" title="Previous step" aria-label="Previous step">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="carousel-control" onclick="moveSearchCarousel(1)" title="Next step" aria-label="Next step">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="carousel-indicators">
+                                    <span class="carousel-indicator active" onclick="jumpToSearchSlide(0)"></span>
+                                    <span class="carousel-indicator" onclick="jumpToSearchSlide(1)"></span>
+                                    <span class="carousel-indicator" onclick="jumpToSearchSlide(2)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="simulation-card">
                     <div class="simulation-info">
                         <h3>Check unread emails</h3>
@@ -195,17 +238,6 @@
                     </div>
                     <div class="simulation-result">
                         <img src="img/sim-email.jpg" alt="Email Check Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Email+Simulation'">
-                    </div>
-                </div>
-                
-                <div class="simulation-card">
-                    <div class="simulation-info">
-                        <h3>Search news</h3>
-                        <p>Command:</p>
-                        <code class="simulation-command">"Find recent news about AI agents"</code>
-                    </div>
-                    <div class="simulation-result">
-                        <img src="img/sim-search.jpg" alt="Search News Simulation" onerror="this.src='https://via.placeholder.com/400x250?text=Search+Simulation'">
                     </div>
                 </div>
             </div>
@@ -581,6 +613,27 @@
                     }, 5000);
                 });
             }
+            
+            // Iniciar el carrusel de búsqueda
+            updateSearchCarousel();
+            
+            // Crear un intervalo para el carrusel de búsqueda
+            let searchCarouselInterval = setInterval(() => {
+                moveSearchCarousel(1);
+            }, 5000); // Cambiar slide cada 5 segundos
+            
+            // Pausar el carrusel de búsqueda al pasar el ratón
+            const searchCarouselContainer = document.querySelector('#searchCarousel').closest('.carousel-container');
+            if (searchCarouselContainer) {
+                searchCarouselContainer.addEventListener('mouseenter', () => {
+                    clearInterval(searchCarouselInterval);
+                });
+                searchCarouselContainer.addEventListener('mouseleave', () => {
+                    searchCarouselInterval = setInterval(() => {
+                        moveSearchCarousel(1);
+                    }, 5000);
+                });
+            }
         });
         
         // Email carousel functionality
@@ -624,6 +677,49 @@
         function jumpToEmailSlide(slideIndex) {
             emailCurrentSlide = slideIndex;
             updateEmailCarousel();
+        }
+        
+        // Search carousel functionality
+        let searchCurrentSlide = 0;
+        const searchTotalSlides = document.querySelectorAll('#searchCarousel .carousel-slide').length;
+        const searchCarouselSlides = document.querySelector('#searchCarousel');
+        const searchCarouselIndicators = document.querySelectorAll('#searchCarousel ~ .carousel-indicators .carousel-indicator');
+        
+        function updateSearchCarousel() {
+            // Actualizar la posición del carrusel
+            if (searchCarouselSlides) {
+                searchCarouselSlides.style.transform = `translateX(-${searchCurrentSlide * 100}%)`;
+            }
+            
+            // Actualizar los indicadores
+            const indicators = document.querySelectorAll('#searchCarousel ~ .carousel-indicators .carousel-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.remove('active');
+                if (index === searchCurrentSlide) {
+                    indicator.classList.add('active');
+                }
+            });
+        }
+        
+        function moveSearchCarousel(direction) {
+            if (direction === 1) {
+                searchCurrentSlide++;
+                if (searchCurrentSlide >= searchTotalSlides) {
+                    searchCurrentSlide = 0;
+                }
+            } else if (direction === -1) {
+                searchCurrentSlide--;
+                if (searchCurrentSlide < 0) {
+                    searchCurrentSlide = searchTotalSlides - 1;
+                }
+            }
+            
+            updateSearchCarousel();
+        }
+        
+        function jumpToSearchSlide(slideIndex) {
+            searchCurrentSlide = slideIndex;
+            updateSearchCarousel();
         }
         
         // Funcionalidad del acordeón para escenarios
