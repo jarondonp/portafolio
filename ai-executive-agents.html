@@ -216,7 +216,8 @@
                                         <img src="img/escenario03-03.JPG" alt="Search News Workflow - Step 3" onclick="enlargeImage(this.src)">
                                     </div>
                                 </div>
-                                
+                                <!-- Caption for Search News Carousel -->
+                                <div id="searchCarouselCaption" class="carousel-caption-dynamic"></div>
                                 <div class="carousel-controls">
                                     <button class="carousel-control" onclick="moveSearchCarousel(-1)" title="Previous step" aria-label="Previous step">
                                         <i class="fas fa-chevron-left"></i>
@@ -743,6 +744,11 @@
                     indicator.classList.add('active');
                 }
             });
+            // Actualizar el caption dinámico
+            const captionDiv = document.getElementById('searchCarouselCaption');
+            if (captionDiv) {
+                captionDiv.innerHTML = searchCaptions[searchCurrentSlide] || '';
+            }
             scheduleNextSearchSlide();
         }
 
@@ -786,6 +792,14 @@
             searchCurrentSlide = slideIndex;
             updateSearchCarousel();
         }
+
+        // --- Search News Carousel Captions (ENGLISH) ---
+        const searchCaptions = [
+            `<b>Smart user request:</b><br>The user sends a natural language instruction to the Telegram bot, asking for the three most important AI news of the day and to have the summary sent by email.`,
+            `<b>Automated multi-agent orchestration:</b><br>The executive agent interprets the request and coordinates specialized agents: one to search for news, another to generate the summary, and another to send the email—all automatically, without manual intervention.`,
+            `<b>Summary generated and delivered to the user:</b><br>The bot replies in Telegram with a detailed summary of the news found, allowing the user to review the information before it is sent by email.`,
+            `<b>Automatic email delivery:</b><br>The system completes the workflow by sending the news summary directly to the user's inbox, demonstrating effective integration between agents and communication channels.`
+        ];
 
         // Iniciar el carrusel de búsqueda
         updateSearchCarousel();
