@@ -325,6 +325,9 @@
         document.getElementById('activate-chat').addEventListener('click', function() {
             // Create the chat instance
             const chat = createChat(chatOptions);
+            if (chat && typeof chat.open === 'function') {
+                setTimeout(() => chat.open(), 200);
+            }
             
             // This only creates the widget once
             this.disabled = true;
@@ -333,9 +336,10 @@
             
             // Add instructional text below the button
             const instructionText = document.createElement('p');
-            instructionText.innerHTML = '<strong>The chat window is now open!</strong> Start typing your message to begin the conversation.';
+            instructionText.innerHTML = '<strong>The chat is ready!</strong> <span style="color:#333">Click the chat bubble at the bottom left to start your conversation.</span>';
             instructionText.style.color = '#4CAF50';
             instructionText.style.marginTop = '10px';
+            instructionText.style.fontSize = '1.07rem';
             this.parentNode.insertBefore(instructionText, document.getElementById('n8n-chat'));
         });
     </script>
