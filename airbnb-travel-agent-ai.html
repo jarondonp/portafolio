@@ -72,48 +72,36 @@
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 1.5rem;
             margin: 2rem 0;
         }
         
-        /* Primera fila - 3 elementos */
-        .features-grid > div:nth-child(1),
-        .features-grid > div:nth-child(2),
-        .features-grid > div:nth-child(3) {
-            grid-column: span 1;
+        /* Primera fila - contenedor flex para 3 elementos */
+        .first-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
         }
         
-        /* Segunda fila - 2 elementos centrados */
-        .features-grid > div:nth-child(4) {
-            grid-column: 1 / 2;
-            justify-self: end;
+        .first-row .feature-card {
+            flex: 1;
+            width: calc(33.33% - 1rem);
         }
         
-        .features-grid > div:nth-child(5) {
-            grid-column: 2 / 3;
-            justify-self: start;
+        /* Segunda fila - contenedor flex para 2 elementos centrados */
+        .second-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
         
-        @media (max-width: 992px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .features-grid > div:nth-child(1),
-            .features-grid > div:nth-child(2),
-            .features-grid > div:nth-child(3),
-            .features-grid > div:nth-child(4),
-            .features-grid > div:nth-child(5) {
-                grid-column: span 1;
-            }
+        .second-row .feature-card {
+            flex: 0 0 30%;
+            max-width: 30%;
         }
         
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
         .feature-card {
             background-color: var(--card-bg);
             border-radius: 10px;
@@ -429,6 +417,36 @@
                 margin: 20% auto;
             }
         }
+        
+        /* Media queries para dispositivos móviles y pantallas pequeñas */
+        @media (max-width: 992px) {
+            .first-row {
+                flex-wrap: wrap;
+            }
+            
+            .first-row .feature-card {
+                flex: 0 0 calc(50% - 1rem);
+                width: calc(50% - 1rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .first-row {
+                flex-direction: column;
+            }
+            
+            .first-row .feature-card,
+            .second-row .feature-card {
+                flex: 0 0 100%;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .second-row {
+                flex-direction: column;
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -484,7 +502,9 @@
         <!-- Key Capabilities -->
         <section class="features-container">
             <h2 class="section-title">🔍 Key Capabilities</h2>
-            <div class="features-grid">
+            
+            <!-- Primera fila con 3 elementos -->
+            <div class="first-row">
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
                     <h3 class="feature-title">Contextual Memory</h3>
@@ -508,7 +528,10 @@
                         Interprets casual language, preferences, and specific travel requirements naturally and accurately.
                     </p>
                 </div>
-
+            </div>
+            
+            <!-- Segunda fila con 2 elementos centrados -->
+            <div class="second-row">
                 <div class="feature-card">
                     <div class="feature-icon">🔁</div>
                     <h3 class="feature-title">Workflow Orchestration</h3>
