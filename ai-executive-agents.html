@@ -236,7 +236,7 @@
                     <i class="fab fa-telegram-plane" style="margin-right: 12px;"></i>Open Telegram Chat
                 </button>
                 <p id="telegram-instruction" style="margin-top: 0; color: #4CAF50; font-weight: 500; font-size: 1.07rem;">
-                    <strong>The chat is ready!</strong> <span style="color:#333">Click the button above to open Telegram and start your conversation with <b>@JRtechnosolutionsbot</b>.</span>
+                    <strong>The chat is ready!</strong> <span style="color:#333">Click the button above to open Telegram and start your conversation with <b>@JRondonBot</b>.</span>
                 </p>
             </div>
             
@@ -253,7 +253,7 @@
                                 <h3>How to connect</h3>
                                 <ol class="numbered-steps">
                                     <li><strong>Scan the QR code</strong> with your mobile device or click the button below</li>
-                                    <li><strong>Open Telegram</strong> and search for <code>@JRtechnosolutionsbot</code></li>
+                                    <li><strong>Open Telegram</strong> and search for <code>@JRondonBot</code></li>
                                     <li><strong>Start a new chat</strong> by clicking on "Start" or typing "/start"</li>
                                     <li><strong>Begin your conversation</strong> with natural language requests</li>
                                 </ol>
@@ -271,7 +271,7 @@
                             </div>
                             <div class="modal-qr">
                                 <div class="qr-container">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://t.me/JRtechnosolutionsbot?start=start" alt="QR Code for Telegram Bot" class="qr-code">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://t.me/JRondonBot" alt="QR Code for Telegram Bot" class="qr-code">
                                     <p class="qr-caption">Scan to connect</p>
                                 </div>
                             </div>
@@ -468,6 +468,38 @@
                         margin: 0 auto 20px;
                     }
                 }
+                
+                .note-box {
+                    background-color: #f8f9fa;
+                    border-left: 4px solid #0088cc;
+                    padding: 12px 15px;
+                    margin: 20px 0;
+                    border-radius: 4px;
+                }
+                
+                .note-box p {
+                    margin: 0;
+                    color: #333;
+                }
+                
+                .note-box i {
+                    color: #0088cc;
+                    margin-right: 8px;
+                }
+                
+                .demo-badge {
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    background-color: #ff5722;
+                    color: white;
+                    font-size: 0.8rem;
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
             </style>
             
             <script>
@@ -497,7 +529,7 @@
                     // Open Telegram when the modal button is clicked
                     if (modalTelegramBtn) {
                         modalTelegramBtn.addEventListener('click', function() {
-                            window.open('https://t.me/JRtechnosolutionsbot?start=start', '_blank', 'noopener');
+                            window.open('https://t.me/JRondonBot', '_blank', 'noopener');
                         });
                     }
                     
