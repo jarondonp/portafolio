@@ -561,12 +561,13 @@
         <section class="try-agent-section">
             <h2>💬 Try the Travel Agent</h2>
             <p>
-                Click the button below to simulate a travel planning chat with the AI agent. Ask about travel options, destinations, 
-                or preferences, and watch the agent interact with Airbnb tools in real time.
+                Click the button below to activate the travel planning chat. You can ask about accommodations, destinations,
+                travel preferences, or specific Airbnb listings, and watch as the AI agent searches and recommends options in real time.
             </p>
-            <button id="start-conversation" class="start-button">
-                <i class="fas fa-comments"></i> Start Conversation
+            <button id="activate-chat" class="start-button">
+                <i class="fas fa-comments"></i> Activate Travel Agent
             </button>
+            <div id="n8n-chat"></div>
         </section>
 
         <!-- Technologies -->
@@ -801,6 +802,82 @@
                     sendMessage();
                 }
             });
+        });
+    </script>
+    
+    <!-- N8N Chat Script -->
+    <script>
+        // Load the n8n Chat Widget script
+        (function (d, t) {
+            var n8n = window.n8nChat = function (o) { (n8n.q = n8n.q || []).push(o); };
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = "https://cdn.n8n.io/chat/widget.js"; s.parentNode.insertBefore(g, s);
+        })(document, "script");
+        
+        // Configure the chat widget
+        const chatOptions = {
+            webhookUrl: 'https://primary-production-28e57.up.railway.app/webhook/f72367c6-42e7-4c01-a4e9-dd524bd01cc8/chat',
+            mode: 'window',
+            showWelcomeScreen: true,
+            autoShow: true,
+            initialMessages: [
+                'Hello! 👋',
+                'I\'m your Airbnb Travel Assistant. How can I help with your travel plans today?'
+            ],
+            i18n: {
+                en: {
+                    title: 'Airbnb Travel Agent',
+                    subtitle: 'Ask me about accommodations, destinations, or travel recommendations.',
+                    footer: 'Powered by n8n',
+                    getStarted: 'Start Planning Your Trip',
+                    inputPlaceholder: 'Ask about travel options...',
+                }
+            },
+            window: {
+                width: '380px',
+                height: '600px',
+                inputHeight: '60px',
+                buttonSize: '50px'
+            },
+            styles: {
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: '16px',
+                getStartedButton: {
+                    backgroundColor: 'var(--primary-color)',
+                    color: 'white',
+                    fontSize: '16px',
+                    padding: '12px 20px',
+                    borderRadius: '6px', 
+                    fontWeight: '500'
+                },
+                input: {
+                    height: '60px',
+                    fontSize: '16px',
+                    padding: '12px 15px'
+                }
+            }
+        };
+        
+        // Initialize the chat widget when the button is clicked
+        document.getElementById('activate-chat').addEventListener('click', function() {
+            // Create the chat instance
+            const chat = createChat(chatOptions);
+            if (chat && typeof chat.open === 'function') {
+                setTimeout(() => chat.open(), 200);
+            }
+            
+            // This only creates the widget once
+            this.disabled = true;
+            this.textContent = 'Travel Agent Activated';
+            this.style.backgroundColor = '#4CAF50';
+            
+            // Add instructional text below the button
+            const instructionText = document.createElement('p');
+            instructionText.innerHTML = '<strong>The travel agent is ready!</strong> <span style="color:#333">Click the chat bubble at the bottom left to start planning your trip.</span>';
+            instructionText.style.color = '#4CAF50';
+            instructionText.style.marginTop = '10px';
+            instructionText.style.fontSize = '1.07rem';
+            this.parentNode.insertBefore(instructionText, document.getElementById('n8n-chat'));
         });
     </script>
 </body>
