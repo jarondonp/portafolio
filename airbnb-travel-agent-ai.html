@@ -466,105 +466,31 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
         }
         
-        /* Contenedor de mensajes con efecto de marco elegante */
-        div[class*="n8n-chat-widget-messages"],
-        .n8n-chat-widget-messages,
-        div[class*="n8n-chat-messages"] {
-            background-color: #ffffff !important;
-            border-radius: 8px !important;
-            border: 1px solid rgba(0, 0, 0, 0.06) !important;
-            margin: 10px !important;
-            padding: 15px !important;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02) !important;
+        /* Contenedor personalizado para el chat con fondo estilizado */
+        .chat-container {
+            background-color: #f5f8ff;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            position: relative;
+            overflow: visible;
         }
         
-        /* Fondo para el encabezado del chat */
-        div[class*="n8n-chat-widget-header"],
-        .n8n-chat-widget-header {
-            background: linear-gradient(135deg, #4F46E5 0%, #0EA5E9 100%) !important;
-            color: white !important;
-            border-radius: 10px 10px 0 0 !important;
-            padding: 12px 16px !important;
-        }
-        
-        /* Ajuste del pie de chat */
-        div[class*="n8n-chat-widget-footer"],
-        .n8n-chat-widget-footer {
-            background-color: #f8f9fc !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
-            border-radius: 0 0 10px 10px !important;
-        }
-        
-        /* Texto más claro en el footer */
-        div[class*="n8n-chat-widget-footer"] span,
-        .n8n-chat-widget-footer span {
-            color: #666 !important;
-            font-size: 12px !important;
-        }
-        
-        /* Estilos globales para cualquier elemento dentro del chat */
-        div[class*="n8n-chat-widget"] *,
-        div[class*="n8n-chat"] *,
-        #n8n-chat * {
-            text-align: left !important;
-        }
-        
-        /* Estilos específicos para el contenedor de mensajes */
-        div[class*="n8n-chat-widget-message-container"],
-        div[class*="n8n-chat-message-container"] {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            justify-content: flex-start !important;
-            width: 100% !important;
-        }
-        
-        /* Estilos para el texto dentro de los mensajes */
-        div[class*="n8n-chat-widget-message-text"],
-        div[class*="n8n-chat-message-text"],
-        div[class*="message-text"] {
-            text-align: left !important;
-            display: block !important;
-            max-width: 100% !important;
-        }
-        
-        /* Estilos específicos para mensajes del bot */
-        div[class*="n8n-chat-widget-message-bot"],
-        div[class*="n8n-chat-message-bot"] {
-            align-self: flex-start !important;
-            text-align: left !important;
-            margin-right: auto !important;
-            margin-left: 0 !important;
-            background-color: #f0f0f0 !important;
-            border-radius: 15px 15px 15px 0 !important;
-            padding: 12px 16px !important;
-            color: #333 !important;
-            max-width: 85% !important;
-        }
-        
-        /* Estilos específicos para mensajes del usuario */
-        div[class*="n8n-chat-widget-message-user"],
-        div[class*="n8n-chat-message-user"] {
-            align-self: flex-end !important;
-            text-align: left !important;
-            margin-left: auto !important;
-            margin-right: 0 !important;
-            background-color: #1976D2 !important;
-            border-radius: 15px 15px 0 15px !important;
-            padding: 12px 16px !important;
-            color: white !important;
-            max-width: 85% !important;
-        }
-        
-        /* Estilos específicos para párrafos y listas en los mensajes */
-        div[class*="n8n-chat"] p,
-        div[class*="n8n-chat"] ul,
-        div[class*="n8n-chat"] ol,
-        div[class*="n8n-chat"] li,
-        div[class*="n8n-chat"] div {
-            text-align: left !important;
-            margin-left: 0 !important;
-            padding-left: 0 !important;
+        /* Efecto decorativo para el contenedor */
+        .chat-container:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50px;
+            width: 30px;
+            height: 30px;
+            background-color: #f5f8ff;
+            border-top: 1px solid rgba(79, 70, 229, 0.15);
+            border-left: 1px solid rgba(79, 70, 229, 0.15);
+            transform: rotate(45deg);
+            z-index: -1;
         }
     </style>
 </head>
@@ -683,10 +609,13 @@
                 Click the button below to activate the travel planning chat. You can ask about accommodations, destinations,
                 travel preferences, or specific Airbnb listings, and watch as the AI agent searches and recommends options in real time.
             </p>
-            <button id="activate-chat" class="start-button">
-                <i class="fas fa-comments"></i> Activate Travel Agent
-            </button>
-            <div id="n8n-chat"></div>
+            <!-- Contenedor con fondo estilizado para el chat -->
+            <div class="chat-container">
+                <button id="activate-chat" class="start-button">
+                    <i class="fas fa-comments"></i> Activate Travel Agent
+                </button>
+                <div id="n8n-chat"></div>
+            </div>
         </section>
 
         <!-- Technologies -->
@@ -797,11 +726,14 @@
                 width: '420px', // Aumentado ligeramente para mejor legibilidad
                 height: '600px',
                 inputHeight: '60px',
-                buttonSize: '50px'
+                buttonSize: '50px',
+                backgroundColor: '#f5f8ff', // Color de fondo para la ventana
+                borderRadius: '12px'
             },
             styles: {
                 fontFamily: 'Poppins, sans-serif',
                 fontSize: '16px',
+                backgroundColor: '#f5f8ff', // Color de fondo para el contenido
                 getStartedButton: {
                     backgroundColor: 'var(--primary-color)',
                     color: 'white',
@@ -860,65 +792,6 @@
             instructionText.style.fontSize = '1.07rem';
             this.parentNode.insertBefore(instructionText, document.getElementById('n8n-chat'));
         });
-    </script>
-    
-    <!-- Script adicional para forzar la alineación a la izquierda -->
-    <script>
-        // Función para aplicar estilos adicionales a los mensajes del chat
-        function applyAdditionalChatStyles() {
-            // El widget de chat puede cargar después, así que usamos un intervalo
-            const styleInterval = setInterval(() => {
-                // Buscamos los contenedores de mensajes del chat
-                const chatContainers = document.querySelectorAll('[class*="n8n-chat-widget"], [class*="n8n-chat"]');
-                
-                if (chatContainers.length > 0) {
-                    // Aplicamos estilos al contenedor principal
-                    chatContainers.forEach(container => {
-                        // Forzar alineación a la izquierda para todos los elementos dentro del chat
-                        const allElements = container.querySelectorAll('*');
-                        allElements.forEach(el => {
-                            if (el.tagName !== 'BUTTON' && !el.classList.contains('n8n-chat-widget-message-user')) {
-                                el.style.textAlign = 'left';
-                                el.style.justifyContent = 'flex-start';
-                                el.style.alignItems = 'flex-start';
-                            }
-                        });
-                        
-                        // Observamos cambios en el DOM para aplicar estilos a nuevos mensajes
-                        const observer = new MutationObserver(mutations => {
-                            mutations.forEach(mutation => {
-                                if (mutation.addedNodes.length) {
-                                    mutation.addedNodes.forEach(node => {
-                                        if (node.nodeType === 1) { // Elemento HTML
-                                            const elements = node.querySelectorAll ? node.querySelectorAll('*') : [];
-                                            elements.forEach(el => {
-                                                if (el.tagName !== 'BUTTON' && !el.classList.contains('n8n-chat-widget-message-user')) {
-                                                    el.style.textAlign = 'left';
-                                                    el.style.justifyContent = 'flex-start';
-                                                    el.style.alignItems = 'flex-start';
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            });
-                        });
-                        
-                        // Configuramos el observador para detectar cambios en el contenedor del chat
-                        observer.observe(container, { childList: true, subtree: true });
-                        
-                        // Hemos encontrado y aplicado estilos, podemos detener el intervalo
-                        clearInterval(styleInterval);
-                    });
-                }
-            }, 1000);
-            
-            // Por seguridad, detenemos el intervalo después de 30 segundos
-            setTimeout(() => clearInterval(styleInterval), 30000);
-        }
-        
-        // Ejecutamos la función cuando se carga la página
-        window.addEventListener('load', applyAdditionalChatStyles);
     </script>
 </body>
 </html>
