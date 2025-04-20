@@ -1799,6 +1799,39 @@ img {
     }
 }
 
+.carousel-caption-fixed {
+    margin: 1.5rem auto 0 auto;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    padding: 1.2rem 1.8rem;
+    font-size: 1.08rem;
+    color: #232323;
+    text-align: center;
+    line-height: 1.6;
+    font-family: inherit;
+    border: 1px solid #f0f0f0;
+}
+
+.dark-theme .carousel-caption-fixed {
+    background: #232232;
+    color: #fff;
+    border: 1px solid #2d2d3a;
+}
+
+.carousel-caption-fixed b {
+    color: #2d7be5;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption-fixed {
+        font-size: 0.98rem;
+        padding: 0.8rem 0.7rem;
+    }
+}
+
 /* Responsive para carrusel */
 @media (max-width: 768px) {
     .carousel-caption {
