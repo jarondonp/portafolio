@@ -280,9 +280,9 @@
         // Configure chat options
         const chatOptions = {
             webhookUrl: 'https://jrtechno.app.n8n.cloud/webhook/27ff0919-cd55-4748-bea6-01a23d85b939/chat',
-            mode: 'popUp',
+            mode: 'window',
             showWelcomeScreen: true,
-            autoShowDelay: 100,
+            autoShow: true,
             initialMessages: [
                 'Hello! 👋',
                 'I\'m the AI Assistant developed by JR Solutions. How can I help you today?'
@@ -325,12 +325,18 @@
         document.getElementById('activate-chat').addEventListener('click', function() {
             // Create the chat instance
             const chat = createChat(chatOptions);
-            chat.open(); // Automatically open the chat widget
             
             // This only creates the widget once
             this.disabled = true;
             this.textContent = 'Chat Widget Activated';
             this.style.backgroundColor = '#4CAF50';
+            
+            // Add instructional text below the button
+            const instructionText = document.createElement('p');
+            instructionText.innerHTML = '<strong>The chat window is now open!</strong> Start typing your message to begin the conversation.';
+            instructionText.style.color = '#4CAF50';
+            instructionText.style.marginTop = '10px';
+            this.parentNode.insertBefore(instructionText, document.getElementById('n8n-chat'));
         });
     </script>
 
