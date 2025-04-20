@@ -447,6 +447,37 @@
                 margin-top: 0;
             }
         }
+        
+        /* Estilos adicionales para mejorar la presentación del chat */
+        .n8n-chat-widget-messages {
+            text-align: left !important;
+            padding: 15px !important;
+        }
+        
+        .n8n-chat-widget-message {
+            white-space: normal !important;
+            word-break: break-word !important;
+            text-align: left !important;
+            margin-bottom: 10px !important;
+        }
+        
+        .n8n-chat-widget-message-bot {
+            background-color: #f5f5f5 !important;
+            color: #333 !important;
+            border-radius: 18px 18px 18px 0 !important;
+            padding: 12px 16px !important;
+            max-width: 85% !important;
+            align-self: flex-start !important;
+        }
+        
+        .n8n-chat-widget-message-user {
+            background-color: #1976D2 !important;
+            color: white !important;
+            border-radius: 18px 18px 0 18px !important;
+            padding: 12px 16px !important;
+            max-width: 85% !important;
+            align-self: flex-end !important;
+        }
     </style>
 </head>
 <body>
@@ -675,7 +706,7 @@
                 }
             },
             window: {
-                width: '380px',
+                width: '420px', // Aumentado ligeramente para mejor legibilidad
                 height: '600px',
                 inputHeight: '60px',
                 buttonSize: '50px'
@@ -695,6 +726,27 @@
                     height: '60px',
                     fontSize: '16px',
                     padding: '12px 15px'
+                }
+            },
+            messageHandler: {
+                // Esta función se ejecuta antes de mostrar cada mensaje
+                // Permite formatear mejor los mensajes y manejar correctamente los enlaces
+                onMessageProcessed: (message) => {
+                    // Asegurarse de que el mensaje tenga un formato adecuado
+                    if (message.text) {
+                        // Formatear listas y elementos numerados correctamente
+                        message.text = message.text
+                            .replace(/(\d+\.\s)/g, '<br>$1')
+                            .replace(/(\n\s*\-\s)/g, '<br>• ')
+                            .replace(/(\n)/g, '<br>');
+                        
+                        // Si el mensaje contiene enlaces, asegurarse de que sean visualizados correctamente
+                        if (message.text.includes('Ver Anuncio') || message.text.includes('este enlace')) {
+                            message.text = message.text.replace(/Ver Anuncio/g, '<em>Demo: Ver información del alojamiento</em>');
+                            message.text = message.text.replace(/este enlace/g, '<em>más opciones disponibles</em>');
+                        }
+                    }
+                    return message;
                 }
             }
         };
