@@ -368,6 +368,27 @@
             font-size: 0.9rem;
         }
         
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tags span {
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .project-header .project-tags {
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
         @media (max-width: 768px) {
             .features-grid {
                 grid-template-columns: 1fr;
@@ -413,8 +434,20 @@
 
         <!-- Project Header -->
         <div class="project-header">
+            <a href="index.html" class="return-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
             <h1>Airbnb Travel Agent AI</h1>
-            <p class="project-tags">OpenRouter | n8n Workflow | MCP Tools | AI Integration</p>
+            <div class="project-tags">
+                <span>OpenRouter</span>
+                <span>n8n Workflow</span>
+                <span>MCP Tools</span>
+                <span>AI Integration</span>
+                <span>Travel AI</span>
+                <span>LLM</span>
+                <span>Airbnb</span>
+                <span>Agent Architecture</span>
+            </div>
             <p class="project-description">
                 This AI-powered travel assistant leverages OpenRouter's language models and integrates with MCP's 
                 Airbnb tools to deliver intelligent, context-aware travel recommendations. Built using n8n's visual 
