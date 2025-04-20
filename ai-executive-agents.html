@@ -227,6 +227,30 @@
             </div>
         </section>
 
+        <!-- Try the AI Agent (Telegram) -->
+        <section class="try-ai-section" style="margin-bottom: 2.5rem;">
+            <h2 class="section-title"><i class="fas fa-robot"></i> Try the AI Agent</h2>
+            <p>Click the button below to start a conversation with the Executive Agent via Telegram. You can ask it questions, request automations, or test its multi-agent capabilities.</p>
+            <div style="display: flex; flex-direction: column; align-items: center; margin: 2rem 0;">
+                <button id="open-telegram-chat" style="background-color: #4CAF50; color: #fff; padding: 16px 36px; font-size: 1.25rem; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s; margin-bottom: 1rem;">
+                    <i class="fab fa-telegram-plane" style="margin-right: 12px;"></i>Open Telegram Chat
+                </button>
+                <p id="telegram-instruction" style="margin-top: 0; color: #4CAF50; font-weight: 500; font-size: 1.07rem;">
+                    <strong>The chat is ready!</strong> <span style="color:#333">Click the button above to open Telegram and start your conversation with <b>@JRtechnosolutionsbot</b>.</span>
+                </p>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var telegramBtn = document.getElementById('open-telegram-chat');
+                    if (telegramBtn) {
+                        telegramBtn.addEventListener('click', function() {
+                            window.open('https://t.me/JRtechnosolutionsbot', '_blank', 'noopener');
+                        });
+                    }
+                });
+            </script>
+        </section>
+
         <!-- Technologies Used -->
         <section>
             <h2 class="section-title">🧠 Technologies Used</h2>
