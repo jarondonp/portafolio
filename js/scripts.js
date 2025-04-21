@@ -81,8 +81,6 @@ function highlightNavItem() {
 
 // Contact form submission
 if (contactForm) {
-    contactForm.action = 'https://formspree.io/f/mnqegvka';
-    contactForm.method = 'POST';
     contactForm.addEventListener('submit', (e) => {
         // Solo validación básica
         const name = document.getElementById('name').value;
@@ -100,8 +98,7 @@ if (contactForm) {
             showNotification('Please enter a valid email', 'error');
             return false;
         }
-        // Si pasa validación, deja que el formulario se envíe normalmente
-        // Formspree mostrará mensaje de éxito o redirigirá
+        // Si pasa validación, permite el envío normal (no previene el submit)
     });
 }
 
