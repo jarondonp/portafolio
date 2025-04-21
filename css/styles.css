@@ -483,7 +483,7 @@ img {
 }
 
 .skill-item i {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: var(--primary-color);
     margin-bottom: 10px;
 }
@@ -1923,4 +1923,20 @@ img {
   .skills-container.skills-grid-4x2 {
     justify-items: center;
   }
+}
+
+/* Override Skills grid a 2 filas x 4 columnas y resetear hacks de spanning */
+@media (min-width: 900px) {
+  .skills-container.skills-grid-4x2 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .skills-container.skills-grid-4x2 > .skill-category {
+    grid-column: auto !important;
+  }
+}
+
+/* Reducir tamaño de iconos en skill items para mejorar estética */
+.skill-item i {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
 }
