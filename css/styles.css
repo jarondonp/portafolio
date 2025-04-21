@@ -1908,3 +1908,19 @@ img {
 .scenario-inner {
     padding: 1rem;
 }
+
+/* Centrar última fila de Skills cuando hay solo dos cajas */
+@media (min-width: 900px) {
+  .skills-container.skills-grid-4x2 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .skills-container.skills-grid-4x2 > .skill-category:nth-last-child(-n+2):nth-child(n+7) {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 900px) {
+  .skills-container.skills-grid-4x2 {
+    justify-items: center;
+  }
+}
