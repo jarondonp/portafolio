@@ -1,39 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Agente</title>
-    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Chat Demo Agente</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    .chat-container { max-width: 400px; margin: auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
+    #chat-window { height: 300px; overflow-y: auto; padding: 1rem; background: #f9f9f9; }
+    .msg { margin: 0.5rem 0; padding: 0.5rem; border-radius: 5px; width: fit-content; }
+    .msg.user { background: #d1e7dd; align-self: flex-end; }
+    .msg.bot  { background: #ffeeba; }
+    .chat-input { display: flex; border-top: 1px solid #ccc; }
+    #user-input { flex: 1; border: none; padding: 0.5rem; }
+    #send-btn   { border: none; background: #0d6efd; color: white; padding: 0 1rem; cursor: pointer; }
+    #send-btn:disabled { background: #94c0ff; cursor: default; }
+    #chat-window, .chat-input { display: flex; flex-direction: column; }
+  </style>
 </head>
 <body>
-<section id="agent-demo">
-  <h2>🤖 Demo en vivo: Agente Hora/Clima</h2>
-  <p>Este demo usa mi agente desplegado en Google Cloud Functions.</p>
 
-  <!-- Botón para actualizar manualmente -->
-  <button onclick="runAgent()">Mostrar hora en Nueva York</button>
+  <h2>🤖 Chat con mi Agente</h2>
+  <div class="chat-container">
+    <div id="chat-window"></div>
+    <div class="chat-input">
+      <input id="user-input" placeholder="Escribe: ¿Cuál es la hora de New York?" />
+      <button id="send-btn" disabled>Enviar</button>
+    </div>
+  </div>
 
-  <!-- Aquí mostraremos la respuesta -->
-  <pre id="agent-output">Presiona el botón para cargar la respuesta…</pre>
-</section>
+  <script>
+    const URL = "https://us-central1-test01agent.cloudfunctions.net/basic-agent";
+    const input = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+    const chat = document.getElementById("chat-window");
 
-<script>
-  async function runAgent() {
-    const res = await fetch("https://us-central1-test01agent.cloudfunctions.net/basic-agent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        task: "get_current_time",
-        params: { city: "New York" }
-      })
+    // Habilita botón solo si hay texto
+    input.addEventListener("input", () => {
+      sendBtn.disabled = !input.value.trim();
     });
-    const data = await res.json();
-    document.getElementById("agent-output").textContent =
-      JSON.stringify(data, null, 2);
-  }
-  // Opcional: cargar automáticamente al abrir la página
-  // window.onload = runAgent;
-</script>
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter" && input.value.trim()) sendMessage();
+    });
+
+    function appendMessage(who, text) {
+      const el = document.createElement("div");
+      el.className = "msg " + who;
+      el.textContent = text;
+      chat.append(el);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = input.value.trim();
+      appendMessage("user", text);
+      input.value = "";
+      sendBtn.disabled = true;
+
+      // Decide qué tarea enviar al agente
+      let task = "get_current_time";
+      if (/clima|weather/i.test(text)) task = "get_weather";
+      // Si quieres, añade más lógica aquí.
+
+      try {
+        const res = await fetch(URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ task, params: { city: "New York" } }),
+        });
+        const data = await res.json();
+        appendMessage("bot", data.report || data.error_message);
+      } catch (err) {
+        appendMessage("bot", "Error de red: " + err.message);
+      }
+    }
+  </script>
+
 </body>
 </html>
