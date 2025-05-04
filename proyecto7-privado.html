@@ -59,16 +59,11 @@
       input.value = "";
       sendBtn.disabled = true;
 
-      // Decide qué tarea enviar al agente
-      let task = "get_current_time";
-      if (/clima|weather/i.test(text)) task = "get_weather";
-      // Si quieres, añade más lógica aquí.
-
       try {
         const res = await fetch(URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ task, params: { city: "New York" } }),
+          body: JSON.stringify({ text }),
         });
         const data = await res.json();
         appendMessage("bot", data.report || data.error_message);
