@@ -1,77 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Chat Demo Agente</title>
-  <style>
-    body { font-family: sans-serif; margin: 2rem; }
-    .chat-container { max-width: 400px; margin: auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
-    #chat-window { height: 300px; overflow-y: auto; padding: 1rem; background: #f9f9f9; }
-    .msg { margin: 0.5rem 0; padding: 0.5rem; border-radius: 5px; width: fit-content; }
-    .msg.user { background: #d1e7dd; align-self: flex-end; }
-    .msg.bot  { background: #ffeeba; }
-    .chat-input { display: flex; border-top: 1px solid #ccc; }
-    #user-input { flex: 1; border: none; padding: 0.5rem; }
-    #send-btn   { border: none; background: #0d6efd; color: white; padding: 0 1rem; cursor: pointer; }
-    #send-btn:disabled { background: #94c0ff; cursor: default; }
-    #chat-window, .chat-input { display: flex; flex-direction: column; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Multiagente</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        #chat-container { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+        #input-container { margin-top: 10px; }
+        #user-input { width: 80%; padding: 5px; }
+        button { padding: 5px 10px; }
+    </style>
 </head>
 <body>
-
-  <h2>🤖 Chat con mi Agente</h2>
-  <div class="chat-container">
-    <div id="chat-window"></div>
-    <div class="chat-input">
-      <input id="user-input" placeholder="Escribe: ¿Cuál es la hora de New York?" />
-      <button id="send-btn" disabled>Enviar</button>
+    <h1>Chat Multiagente</h1>
+    <div id="chat-container"></div>
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+        <button onclick="sendMessage()">Enviar</button>
     </div>
-  </div>
 
-  <script>
-    const URL = "https://us-central1-test01agent.cloudfunctions.net/basic-agent";
-    const input = document.getElementById("user-input");
-    const sendBtn = document.getElementById("send-btn");
-    const chat = document.getElementById("chat-window");
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const apiUrl = 'https://multiagent-chat-225112596512.us-central1.run.app'; // Reemplaza con la URL de Cloud Run
 
-    // Habilita botón solo si hay texto
-    input.addEventListener("input", () => {
-      sendBtn.disabled = !input.value.trim();
-    });
+        function addMessage(sender, message) {
+            const messageElement = document.createElement('p');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
 
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keydown", e => {
-      if (e.key === "Enter" && input.value.trim()) sendMessage();
-    });
+        async function sendMessage() {
+            const question = userInput.value.trim();
+            if (!question) return;
 
-    function appendMessage(who, text) {
-      const el = document.createElement("div");
-      el.className = "msg " + who;
-      el.textContent = text;
-      chat.append(el);
-      chat.scrollTop = chat.scrollHeight;
-    }
+            addMessage('Tú', question);
+            userInput.value = '';
 
-    async function sendMessage() {
-      const text = input.value.trim();
-      appendMessage("user", text);
-      input.value = "";
-      sendBtn.disabled = true;
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
+                });
+                const data = await response.json();
+                if (data.error) {
+                    addMessage('Error', data.error);
+                } else {
+                    addMessage('Agente', data.translated_answer || data.answer);
+                }
+            } catch (error) {
+                addMessage('Error', 'No se pudo conectar con el servidor.');
+            }
+        }
 
-      try {
-        const res = await fetch(URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text }),
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
         });
-        const data = await res.json();
-        appendMessage("bot", data.report || data.error_message);
-      } catch (err) {
-        appendMessage("bot", "Error de red: " + err.message);
-      }
-    }
-  </script>
-
+    </script>
 </body>
 </html>
