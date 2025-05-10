@@ -3,62 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Multiagente</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
-        #chat-container { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
-        #input-container { margin-top: 10px; }
-        #user-input { width: 80%; padding: 5px; }
-        button { padding: 5px 10px; }
-    </style>
+    <title>Agente de IA - Acortador de Mensajes</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Chat Multiagente</h1>
-    <div id="chat-container"></div>
-    <div id="input-container">
-        <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
-        <button onclick="sendMessage()">Enviar</button>
+    <div class="project-section">
+        <h2>Agente de IA - Acortador de Mensajes</h2>
+        <p>Un chatbot integrado con Vertex AI que ayuda a acortar mensajes.</p>
+        
+        <!-- Contenedor responsive para el iframe -->
+        <div class="responsive-iframe-container" style="position: relative; overflow: hidden; padding-top: 56.25%; /* Para proporción 16:9 */ max-width: 100%; margin: 0 auto;">
+            <iframe 
+                src="https://agent-web-interface-225112596512.us-central1.run.app"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                allowtransparency="true">
+            </iframe>
+        </div>
     </div>
 
-    <script>
-        const chatContainer = document.getElementById('chat-container');
-        const userInput = document.getElementById('user-input');
-        const apiUrl = 'https://multiagent-chat-225112596512.us-central1.run.app'; // Reemplaza con la URL de Cloud Run
-
-        function addMessage(sender, message) {
-            const messageElement = document.createElement('p');
-            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-            chatContainer.appendChild(messageElement);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        async function sendMessage() {
-            const question = userInput.value.trim();
-            if (!question) return;
-
-            addMessage('Tú', question);
-            userInput.value = '';
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ question })
-                });
-                const data = await response.json();
-                if (data.error) {
-                    addMessage('Error', data.error);
-                } else {
-                    addMessage('Agente', data.translated_answer || data.answer);
-                }
-            } catch (error) {
-                addMessage('Error', 'No se pudo conectar con el servidor.');
+    <style>
+        /* Estilos adicionales para mejorar la responsividad */
+        @media (max-width: 768px) {
+            .responsive-iframe-container {
+                padding-top: 100%; /* Más cuadrado en móviles para mejor visualización */
             }
         }
-
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-    </script>
+        
+        @media (max-width: 480px) {
+            .responsive-iframe-container {
+                padding-top: 140%; /* Más alto que ancho en móviles pequeños */
+            }
+        }
+    </style>
 </body>
 </html>
